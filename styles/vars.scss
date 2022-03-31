@@ -1,0 +1,22 @@
+$primary-font: 'Poppins';
+$bold: 700;
+
+$light-color: #f3f3f3;
+$soft-light-color: #ececec;
+$dark-color: #000000;
+$accent-color: #a451e4;
+$third-color: #1cb4e2;
+
+$fs-navLink: 1.6rem;
+$fs-h1: 2.4rem;
+$fs-h1-big: 3.5rem;
+$fs-name: 2.7rem;
+$fs-h2: 2.4rem;
+
+@mixin h2-styles {
+    text-align: center;
+    font-size: $fs-h2;
+    color: $accent-color;
+
+    margin-top: 0;
+}

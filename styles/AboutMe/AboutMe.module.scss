@@ -1,0 +1,83 @@
+@import '../vars.scss';
+
+.AboutMe {
+    display: grid;
+}
+
+.aboutMeContainer {
+    margin: 3.5em 2em;
+    display: grid;
+    .title {
+        @include h2-styles();
+        width: 80%;
+        margin: 0 auto 1em;
+    }
+    .myDescription {
+        max-width: 90%;
+        line-height: 1.8;
+        font-weight: 300;
+
+        margin-block: 1em;
+        &:nth-child(2) {
+            text-align: end;
+
+            padding-right: 1em;
+            border-right: 3px solid $third-color;
+            justify-self: end;
+        }
+    }
+
+    .skillsTitle {
+        font-weight: 500;
+        color: $third-color;
+
+        margin-bottom: 0em;
+    }
+
+    .skills {
+        margin-top: 0;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+@media (min-width: 600px) {
+    .aboutMeContainer {
+        .wrapper {
+            width: 80%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            align-items: flex-start;
+            margin: 0 auto;
+            justify-content: space-between;
+            .title {
+                grid-row: 1 / 2;
+            }
+
+            .myDescription {
+                display: block;
+                text-align: center;
+                justify-self: center;
+                margin-inline: 1.5em;
+                border-top: 2px solid $third-color;
+                max-width: 250px;
+                height: 200px;
+                padding-top: 0.5em;
+                // margin: 5em;
+                &:nth-child(2) {
+                    text-align: center;
+
+                    border-top: 2px solid $third-color;
+                    border-right: none;
+                    padding-right: 0;
+                    justify-self: center;
+                }
+            }
+
+            .skillsContainer {
+                display: inline-block;
+            }
+        }
+    }
+}

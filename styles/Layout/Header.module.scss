@@ -1,0 +1,76 @@
+@import '../vars.scss';
+
+.header {
+    position: sticky;
+    top: 0;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    align-items: center;
+    justify-items: space-between;
+    background-color: $dark-color;
+    padding: 0.5em 2em;
+    z-index: 10;
+
+    // .logoLink {
+    //     width: 250px;
+    //     height: 80px;
+    // }
+
+    .navToggle {
+        padding: 0.5em;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        right: 1em;
+        transform: translateY(-50%);
+        z-index: 10000;
+    }
+
+    .hamburger {
+        display: block;
+        position: relative;
+        &:before {
+            top: 6px;
+        }
+        &:after {
+            bottom: 6px;
+        }
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+    }
+
+    .hamburger,
+    .hamburger::before,
+    .hamburger::after {
+        background: $accent-color;
+        width: 2em;
+        height: 3px;
+        border-radius: 1em;
+        transition: transform 250ms ease-in-out;
+    }
+
+    .hamburgerClicked {
+        transform: rotate(0.625turn);
+        &:before {
+            transform: rotate(90deg) translateX(-6px);
+        }
+        &:after {
+            opacity: 0;
+        }
+    }
+}
+
+@media (min-width: 900px) {
+    .header {
+        .navToggle {
+            display: none;
+        }
+    }
+}

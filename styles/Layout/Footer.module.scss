@@ -1,0 +1,20 @@
+@import '../vars.scss';
+
+.footer {
+    background-color: $dark-color;
+    padding: 1em;
+
+    .icon {
+        display: inline;
+        width: 100px;
+        height: 100px;
+    }
+
+    .footerLink {
+        color: $light-color;
+        text-decoration: none;
+        p {
+            margin-block: 0.5em;
+        }
+    }
+}
