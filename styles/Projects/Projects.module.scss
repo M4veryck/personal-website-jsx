@@ -1,29 +1,255 @@
 @import '../vars.scss';
+@import '../AboutMe/AboutMe.module.scss';
 
 .Projects {
-    border-top: 3px solid $third-color;
-    padding-top: 3.5em;
-    h2 {
-        @include h2-styles();
-    }
+    display: grid;
+    background-color: #f3f3f3;
+    background-image: url('/flat-background-def2.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-items: center;
+}
+
+.projectContainer {
+    @include general-container();
+}
+
+.title {
+    @include h2-styles();
+    margin-top: 3em;
+    margin-bottom: 0;
 }
 
 .project {
+    display: grid;
+    // grid-template-rows: repeat(4, auto);
+    min-width: 420px * 0.7;
+    // width: 70%;
+    max-width: 320px;
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-radius: 10px;
+    border: 3px solid #8f8f8f;
+    margin: 3em auto;
+
     text-align: center;
 
-    display: grid;
-    width: 270px;
-    margin: 3em auto;
-    border-radius: 5px;
-    border: 1px solid $accent-color;
-    h3 {
-        grid-row: 2 / 3;
-        margin: 0;
-    }
-    .imageContainer {
-        width: 270px;
-        .projectImage {
-            border-radius: 5px;
+    @for $i from 1 through 3 {
+        @if $i % 2 != 0 {
+            &:nth-child(#{$i}) {
+                background: rgba(0, 0, 0, 0.5);
+                .projectTitle {
+                    color: $light-color;
+                }
+            }
+        } @else {
+            &:nth-child(#{$i}) {
+                background: rgba(86, 39, 125, 0.5);
+            }
         }
+    }
+}
+
+.imageContainer {
+    min-height: 160px;
+    height: 40%;
+    position: relative;
+    grid-row: 1 / 2;
+}
+
+.projectImage {
+    object-fit: cover;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.textContainer {
+    display: grid;
+    justify-items: center;
+    min-height: 200px;
+    height: 60%;
+
+    padding: 1em 1em 2em;
+}
+
+.projectTitle {
+    margin-top: 0;
+}
+
+.projectDesc {
+    width: 80%;
+
+    margin-top: 0;
+    margin-bottom: 2em;
+}
+
+.linksContainer {
+    display: grid;
+    width: 80%;
+    row-gap: 1em;
+}
+.projectLink {
+    width: 100%;
+
+    padding-block: 0.5em;
+    border: none;
+    border-radius: 3px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    font-weight: $bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+
+    &:first-child {
+        background-color: $light-color;
+        color: $dark-color;
+        // TESTING
+        border: 2px solid black;
+    }
+
+    &:last-child {
+        display: flex;
+        justify-content: center;
+
+        background-color: $dark-color;
+        color: $light-color;
+        // TESTING
+        border: 2px solid $light-color;
+
+        .linkText {
+            display: grid;
+            align-self: center;
+            margin-left: 1em;
+        }
+    }
+}
+
+@media (min-width: 840px) {
+    .project {
+        grid-template-columns: 1fr 1fr;
+        width: 90%;
+        max-width: 840px;
+
+        // TESTING
+        @for $i from 1 through 3 {
+            @if $i % 2 != 0 {
+                &:nth-child(#{$i}) {
+                    // background-color: rgb(34, 34, 34);
+                    background-color: transparent;
+                    border-color: $dark-color;
+                    // color: $light-color;
+                    color: $dark-color;
+                    border-radius: 0;
+                }
+            } @else {
+                &:nth-child(#{$i}) {
+                    background: rgba(86, 39, 125, 1);
+                    border-color: rgba(86, 39, 125, 1);
+                    color: $light-color;
+                }
+            }
+        }
+        background-color: $dark-color;
+        color: $light-color;
+        border-radius: 0;
+    }
+
+    .imageContainer {
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .projectImage {
+        border-top-right-radius: 0;
+        border-radius: 0;
+    }
+
+    .textContainer {
+        height: 100%;
+    }
+
+    .projectLink {
+        &:last-child {
+            .linkText {
+                margin-left: 0.4em;
+            }
+        }
+    }
+}
+
+@media (min-width: 1140px) {
+    .projectContainer {
+        grid-template-rows: repeat(3, 1fr);
+        // justify-items: start;
+        width: 95%;
+    }
+
+    .project {
+        @for $i from 1 through 3 {
+            @if $i % 2 != 0 {
+                &:nth-child(#{$i}) {
+                    justify-self: start;
+                }
+            } @else {
+                &:nth-child(#{$i}) {
+                    justify-self: end;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1281px) {
+    .project {
+        &:hover,
+        &:focus {
+            // TESTING
+            background: rgb(255, 41, 41);
+            color: $dark-color;
+            .projectTitle {
+                color: $dark-color;
+            }
+            // background: linear-gradient(0deg, #1cb4e2 0%, #ffffff 100%);
+            animation: bigAndBlue 0.4s linear forwards;
+        }
+
+        .projectLink {
+            &:first-child {
+                &:hover,
+                &:focus {
+                    background-color: $accent-color;
+                    color: $light-color;
+                }
+            }
+            &:last-child {
+                &:hover,
+                &:focus {
+                    background-color: #da2dae;
+                    color: $dark-color;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1720px) {
+    .projectContainer {
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 800px);
+    }
+}
+
+@keyframes bigAndBlue {
+    from {
+        opacity: 0.9;
+    }
+    to {
+        transform: scale(1.03);
+        opacity: 1;
     }
 }

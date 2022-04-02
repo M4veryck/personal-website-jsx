@@ -1,30 +1,39 @@
+import { useRouter } from 'next/router'
+import { useState, useRef, useEffect } from 'react'
+import Image from 'next/image'
+
 import styles from '../../styles/Hero/Hero.module.scss'
+import useOnScreen from '../hooks/useOnScreen'
 
 export default function Hero() {
     return (
         <section className={styles.Hero} id="main">
             <div className={styles.heroContainer}>
-                <div className={styles.leftCol}>
-                    <h1 className={styles.intro}>Hi! I{`'`}m </h1>
-                    <div className={styles.nameAndRol}>
-                        <span className={styles.name}>Maveryck Maya</span>
-                        <p className={styles.rol}>Frontend dev</p>
+                <h1 className={styles.intro}>Hi! I{`'`}m </h1>
+                <div className={styles.nameAndRol}>
+                    <div className={styles.nameContainer}>
+                        <div className={styles.name}>
+                            {'<'}Maveryck Maya{'/>'}
+                        </div>
                     </div>
+                    <p className={styles.rol}>Frontend developer</p>
                 </div>
-                <p className={styles.desc}>
-                    {/* Having knowledge on <br />
-                    <strong>HTML, CSS, JavaScript,</strong> and
-                    <strong> React</strong>,  */}
-                    I tackle problems with{' '}
-                    <span className={styles.descHighlights}>
-                        efficient solutions
-                    </span>
-                    , while writing{' '}
-                    <span className={styles.descHighlights}>
-                        clean and understandable
-                    </span>{' '}
-                    code.
+                <p className={styles.quote}>
+                    <q className={styles.quotePhrase}>
+                        “You must have chaos within you to give birth to a
+                        dancing star.”
+                    </q>
+                    - Friedrich Nietzsche
                 </p>
+                <div className={styles.avatarImageContainer}>
+                    <Image
+                        src="/styled-avatar2.svg"
+                        alt="Maveryck Maya cartoon drawing"
+                        width={350}
+                        height={350}
+                        className={styles.avatarImage}
+                    />
+                </div>
             </div>
         </section>
     )

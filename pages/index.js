@@ -1,10 +1,11 @@
+import { useState, useEffect, useRef } from 'react'
+import { useRouter } from 'next/router'
+
 import Head from 'next/head'
-import Link from 'next/link'
-import Image from 'next/image'
-import styles from '../styles/Home.module.scss'
 import Hero from '../components/hero'
 import AboutMe from '../components/aboutMe'
 import Projects from '../components/projects'
+import useOnScreen from '../components/hooks/useOnScreen'
 
 export default function Home() {
     return (

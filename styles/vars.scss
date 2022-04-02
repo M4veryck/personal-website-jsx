@@ -8,15 +8,16 @@ $accent-color: #a451e4;
 $third-color: #1cb4e2;
 
 $fs-navLink: 1.6rem;
-$fs-h1: 2.4rem;
+$fs-h1: 2.2rem;
 $fs-h1-big: 3.5rem;
-$fs-name: 2.7rem;
-$fs-h2: 2.4rem;
+$fs-name: 2.4rem;
+$fs-h2: 2.2rem;
 
 @mixin h2-styles {
     text-align: center;
     font-size: $fs-h2;
     color: $accent-color;
-
-    margin-top: 0;
+    border: 2px solid $accent-color;
+    width: 10em;
+    margin: 0 auto 1em;
 }

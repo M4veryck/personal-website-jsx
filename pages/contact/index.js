@@ -1,41 +1,67 @@
 import Link from 'next/link'
 import styles from '../../styles/Contact/Contact.module.scss'
 import { validateEmail } from '../../utils/utils'
-import { useRef, useState } from 'react'
-import emailjs, { init, sendForm } from '@emailjs/browser'
+import { useEffect, useState, useRef } from 'react'
+import emailjs, { init, send } from '@emailjs/browser'
 init('iZu4cY_9HYBlPdW9q')
 
 export default function Contact() {
-    const btn = useRef(null)
     const [formData, setFormData] = useState({
         user_name: '',
         user_email: '',
         message: '',
     })
     const [success, setSuccess] = useState(null)
-    const [disabled, setDisabled] = useState(false)
-    const [invalidEmail, setInvalidEmail] = useState(false)
+    const [disabledButton, setDisabledButton] = useState(true)
+    const [validEmail, setValidEmail] = useState(true)
+    const [validForm, setValidForm] = useState(false)
+
+    const isFormFilled = formData => {
+        const formDataValues = Object.values(formData)
+        return formDataValues.every(field => field !== '')
+    }
 
     const handleChange = e => {
         const { value, name } = e.target
 
-        setFormData(prevFormData => ({
-            ...prevFormData,
-            [name]: value,
-        }))
-
-        if (!validateEmail(formData.user_email)) {
-            setDisabled(true)
-            setInvalidEmail(true)
-            return
-        }
-
-        setDisabled(false)
-        setInvalidEmail(false)
+        setFormData(prevFormData => ({ ...prevFormData, [name]: value }))
     }
 
-    const sendEmail = async e => {
+    const handleEmail = e => {
+        const { value } = e.target
+
+        setFormData(prevFormData => ({ ...prevFormData, user_email: value }))
+        setValidEmail(validateEmail(value))
+    }
+
+    useEffect(() => {
+        const userEmail = formData.user_email
+        setValidForm(isFormFilled(formData) && validateEmail(userEmail))
+
+        setDisabledButton(!isFormFilled(formData) || !validateEmail(userEmail))
+    }, [formData])
+
+    useEffect(() => {
+        const sendBtn = document.getElementById('send-btn')
+        sendBtn.addEventListener(
+            'click',
+            () => (sendBtn.textContent = 'Loading...')
+        )
+        return () => {
+            sendBtn.removeEventListener(
+                'click',
+                () => (sendBtn.textContent = 'Loading...')
+            )
+        }
+    }, [])
+
+    const sendEmail = e => {
         e.preventDefault()
+
+        if (!validForm) {
+            setSuccess(false)
+            return
+        }
 
         emailjs
             .send('contact_service', 'contact_form', formData)
@@ -46,82 +72,101 @@ export default function Contact() {
                     message: '',
                 })
                 setSuccess(true)
+                setDisabledButton(false)
+
                 console.log(
                     `Email sent from ${formData.user_email} succesfully`
                 )
             })
             .catch(err => {
                 setSuccess(false)
+                setDisabledButton(false)
+
                 console.log(error.text)
             })
-
-        setDisabled(false)
     }
 
     return (
         <section className={styles.contact}>
-            <h2>Contact me</h2>
-            <p className={styles.desc}>
-                If you are interested in <strong>hiring me</strong> or other
-                inquiries, please fill up the form.
-            </p>
-            {success ? (
-                <>
-                    <p className={styles.successMessage}>
-                        Email sent succesfully! <br /> I{`'`}ll be in contact
-                        with you as soon as possible
-                    </p>
-                    <Link href="/">
-                        <a className={styles.goHome}>Home</a>
-                    </Link>
-                </>
-            ) : success === false ? (
-                <p className={styles.failureMessage}>
-                    Something went wrong :{`(`} <br /> Please refresh and try
-                    again.
+            <div className={styles.contactContainer}>
+                <h2 className={styles.title}>Contact me</h2>
+                <p className={styles.desc}>
+                    If you are interested in <strong>hiring me</strong> or any
+                    other inquiries, please fill up the form.
                 </p>
-            ) : (
-                <form className={styles.form} onSubmit={sendEmail}>
-                    <label htmlFor="user_name">Name</label>
-                    <input
-                        type="text"
-                        name="user_name"
-                        id="user_name"
-                        onChange={handleChange}
-                        value={formData.user_name}
-                    />
+                {success ? (
+                    <>
+                        <p className={styles.successMessage}>
+                            Email sent succesfully! <br /> I{`'`}ll be in
+                            contact with you as soon as possible
+                        </p>
+                        <div className={styles.goHomeContainer}>
+                            <Link href="/">
+                                <a className={styles.goHome}>Home</a>
+                            </Link>
+                        </div>
+                    </>
+                ) : success === false ? (
+                    <p className={styles.failureMessage}>
+                        Something went wrong :{`(`} <br /> Please refresh and
+                        try again.
+                    </p>
+                ) : (
+                    <form className={styles.form} onSubmit={sendEmail}>
+                        <label htmlFor="user_name">Name</label>
+                        <input
+                            type="text"
+                            name="user_name"
+                            id="user_name"
+                            onChange={handleChange}
+                            value={formData.user_name}
+                            className={styles.userName}
+                        />
 
-                    <label htmlFor="user_email">Email</label>
-                    <input
-                        type="email"
-                        name="user_email"
-                        id="user_email"
-                        onChange={handleChange}
-                        value={formData.user_email}
-                    />
-                    {invalidEmail && (
-                        <p className={styles.invalidEmailMsg}>Invalid Email</p>
-                    )}
+                        <label htmlFor="user_email">Email</label>
+                        <input
+                            type="email"
+                            name="user_email"
+                            id="user_email"
+                            onChange={handleEmail}
+                            value={formData.user_email}
+                            className={styles.userEmail}
+                        />
+                        {!validEmail && (
+                            <p className={styles.invalidEmailMsg}>
+                                ! Invalid Email
+                            </p>
+                        )}
 
-                    <label htmlFor="message">Message</label>
-                    <textarea
-                        name="message"
-                        id="message"
-                        onChange={handleChange}
-                        value={formData.message}
-                    />
+                        <label htmlFor="message">Message</label>
+                        <textarea
+                            name="message"
+                            id="message"
+                            onChange={handleChange}
+                            value={formData.message}
+                            className={styles.message}
+                        />
 
-                    <button
-                        disabled={disabled}
-                        onClick={e => {
-                            setDisabled(true)
-                            sendEmail(e)
-                        }}
-                    >
-                        Submit
-                    </button>
-                </form>
-            )}
+                        {!validForm && (
+                            <p className={styles.failureMessage}>
+                                All fields are required
+                            </p>
+                        )}
+
+                        <button
+                            disabled={disabledButton}
+                            onClick={e => {
+                                setDisabledButton(true)
+                                sendEmail(e)
+                            }}
+                            className={styles.sendButton}
+                            id="send-btn"
+                        >
+                            Send
+                        </button>
+                    </form>
+                )}
+            </div>
         </section>
     )
 }

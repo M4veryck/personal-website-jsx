@@ -1,15 +1,27 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../../styles/Layout/Header.module.scss'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from './navbar'
 
 export default function Header() {
     const [navOn, setNavOn] = useState(false)
 
     const toggleNav = () => {
-        setNavOn(prev => !prev)
+        if (window.innerWidth < 900) {
+            setNavOn(prev => !prev)
+            return
+        }
+        setNavOn(false)
     }
+
+    useEffect(() => {
+        if (navOn) {
+            document.body.style.overflow = 'hidden'
+            return
+        }
+        document.body.style.overflow = 'initial'
+    }, [navOn])
 
     return (
         <header className={styles.header}>
@@ -19,7 +31,7 @@ export default function Header() {
                         src="/MMaveryck.svg"
                         alt=""
                         width={250}
-                        height={80}
+                        height={50}
                         className={styles.logo}
                     />
                 </a>
