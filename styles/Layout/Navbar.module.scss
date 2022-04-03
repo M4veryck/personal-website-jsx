@@ -70,9 +70,13 @@
                 letter-spacing: 2.5px;
 
                 &:hover,
-                &:focus {
-                    border-bottom: 2px solid $accent-color;
+                &:focus-visible {
+                    border-bottom: 2px solid $third-color;
                 }
+            }
+
+            .current {
+                border-bottom: 2px solid $accent-color;
             }
         }
     }

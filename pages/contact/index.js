@@ -1,8 +1,10 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../../styles/Contact/Contact.module.scss'
 import { validateEmail } from '../../utils/utils'
 import { useEffect, useState, useRef } from 'react'
 import emailjs, { init, send } from '@emailjs/browser'
+import useCurrentSection from '../../components/hooks/useCurrentSection'
 init('iZu4cY_9HYBlPdW9q')
 
 export default function Contact() {
@@ -15,6 +17,8 @@ export default function Contact() {
     const [disabledButton, setDisabledButton] = useState(true)
     const [validEmail, setValidEmail] = useState(true)
     const [validForm, setValidForm] = useState(false)
+    const contactRef = useRef()
+    useCurrentSection(contactRef, '0px', '/contact')
 
     const isFormFilled = formData => {
         const formDataValues = Object.values(formData)
@@ -87,7 +91,7 @@ export default function Contact() {
     }
 
     return (
-        <section className={styles.contact}>
+        <section className={styles.contact} ref={contactRef}>
             <div className={styles.contactContainer}>
                 <h2 className={styles.title}>Contact me</h2>
                 <p className={styles.desc}>
@@ -97,6 +101,14 @@ export default function Contact() {
                 {success ? (
                     <>
                         <p className={styles.successMessage}>
+                            <div className={styles.iconContainer}>
+                                <Image
+                                    src="/checked-icon2.svg"
+                                    alt="checked mark"
+                                    width={40}
+                                    height={40}
+                                />
+                            </div>
                             Email sent succesfully! <br /> I{`'`}ll be in
                             contact with you as soon as possible
                         </p>
@@ -108,6 +120,14 @@ export default function Contact() {
                     </>
                 ) : success === false ? (
                     <p className={styles.failureMessage}>
+                        <div className={styles.iconContainer}>
+                            <Image
+                                src="/error-icon.svg"
+                                alt="checked mark"
+                                width={40}
+                                height={40}
+                            />
+                        </div>
                         Something went wrong :{`(`} <br /> Please refresh and
                         try again.
                     </p>

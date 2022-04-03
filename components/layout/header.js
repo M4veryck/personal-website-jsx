@@ -24,7 +24,7 @@ export default function Header() {
     }, [navOn])
 
     return (
-        <header className={styles.header}>
+        <header className={styles.header} id="header">
             <Link href="/#main">
                 <a className={styles.logoLink}>
                     <Image

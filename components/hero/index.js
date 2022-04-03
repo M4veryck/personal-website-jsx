@@ -3,11 +3,16 @@ import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 
 import styles from '../../styles/Hero/Hero.module.scss'
-import useOnScreen from '../hooks/useOnScreen'
+import useIntersection from '../hooks/useIntersection'
+import { NavBarContextConsumer } from '../navBarContext'
+import useCurrentSection from '../hooks/useCurrentSection'
 
 export default function Hero() {
+    const heroRef = useRef()
+    useCurrentSection(heroRef, '-300px', '/')
+
     return (
-        <section className={styles.Hero} id="main">
+        <section className={styles.Hero} id="main" ref={heroRef}>
             <div className={styles.heroContainer}>
                 <h1 className={styles.intro}>Hi! I{`'`}m </h1>
                 <div className={styles.nameAndRol}>
@@ -23,7 +28,10 @@ export default function Hero() {
                         “You must have chaos within you to give birth to a
                         dancing star.”
                     </q>
-                    - Friedrich Nietzsche
+                    {'  '}-{' '}
+                    <strong className={styles.quoteAuthor}>
+                        Friedrich Nietzsche
+                    </strong>
                 </p>
                 <div className={styles.avatarImageContainer}>
                     <Image

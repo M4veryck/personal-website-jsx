@@ -12,6 +12,7 @@
     background-size: cover;
 
     .heroContainer {
+        min-height: 300px;
         height: 60%;
         margin: auto 2em;
         display: grid;
@@ -82,6 +83,10 @@
     }
 }
 
+.quoteAuthor {
+    white-space: nowrap;
+}
+
 @mixin increase-fs($increase) {
     .heroContainer {
         margin-left: 2em * $increase * 2.2;
@@ -134,7 +139,7 @@
         .heroContainer {
             height: 70%;
             .quote {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
         }
     }
@@ -145,10 +150,8 @@
         height: 80vh;
         @include increase-fs(1.5);
         .heroContainer {
+            min-height: 400px;
             height: 70%;
-            .quote {
-                font-size: 1.4rem;
-            }
         }
     }
 }
@@ -160,7 +163,7 @@
         .heroContainer {
             height: 70%;
             .quote {
-                font-size: 1.4rem;
+                font-size: 1.1rem;
             }
         }
     }

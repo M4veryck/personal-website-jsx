@@ -2,20 +2,25 @@
 
 .contact {
     display: grid;
-    // justify-items: center;
+    justify-items: center;
     background-color: #f3f3f3;
-    background-image: url('/triangles-background2.png');
+    background-image: url('/white-background.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 
+    // padding: 1em;
+
     .contactContainer {
+        width: 90%;
         max-width: 400px;
-        margin: 3em 2em;
+        // margin: 3em 2em;
+        margin-block: 4em;
 
         .title {
             @include h2-styles();
-            margin-bottom: 2em;
+            margin-bottom: 1em;
+            width: 100%;
         }
 
         .desc {
@@ -43,7 +48,7 @@
             text-decoration: none;
 
             &:hover,
-            &:focus {
+            &:focus-visible {
                 color: $light-color;
                 background-color: $third-color;
                 transform: scale(1.1);
@@ -102,6 +107,8 @@
             .userName,
             .userEmail,
             .message {
+                width: 100%;
+
                 font-family: $primary-font;
                 font-size: 1rem;
 
@@ -136,14 +143,6 @@
     }
 }
 
-@media (min-width: 700px) {
-    .contact {
-        .contactContainer {
-            margin: 3em 0 3em 10%;
-        }
-    }
-}
-
 @media (min-width: 1281px) {
     // .contactContainer {
     //     animation: slideFromAbove 2s linear;
@@ -153,7 +152,7 @@
     .userEmail,
     .message {
         border: none;
-        &:focus {
+        &:focus-visible {
             outline: 1px solid $third-color;
             transform: scale(1.02);
         }

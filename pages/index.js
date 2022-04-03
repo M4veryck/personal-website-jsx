@@ -3,9 +3,8 @@ import { useRouter } from 'next/router'
 
 import Head from 'next/head'
 import Hero from '../components/hero'
-import AboutMe from '../components/aboutMe'
-import Projects from '../components/projects'
-import useOnScreen from '../components/hooks/useOnScreen'
+import AboutMe from './#about'
+import Projects from './#projects'
 
 export default function Home() {
     return (
