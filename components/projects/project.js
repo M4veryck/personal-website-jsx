@@ -11,9 +11,7 @@ export default function Project({ imgSrc, imgAlt, projectTitle, projectDesc }) {
                     alt={imgAlt}
                     width={320}
                     height={360}
-                    // layout="fill"
                     objectFit="cover"
-                    // sizes="100%"
                     className={styles.projectImage}
                 />
             </div>
@@ -29,10 +27,10 @@ export default function Project({ imgSrc, imgAlt, projectTitle, projectDesc }) {
                     <Link href="https://github.com">
                         <a target="_blank" className={styles.projectLink}>
                             <Image
-                                src="/github-icon3.svg"
+                                src="/icons/white-github-icon.svg"
                                 alt="github-icon"
-                                width={30}
-                                height={30}
+                                width={25}
+                                height={25}
                                 className={styles.githubIcon}
                             />
                             <span className={styles.linkText}>Github Repo</span>

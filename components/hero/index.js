@@ -1,10 +1,7 @@
-import { useRouter } from 'next/router'
-import { useState, useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import Image from 'next/image'
 
 import styles from '../../styles/Hero/Hero.module.scss'
-import useIntersection from '../hooks/useIntersection'
-import { NavBarContextConsumer } from '../navBarContext'
 import useCurrentSection from '../hooks/useCurrentSection'
 
 export default function Hero() {
@@ -12,35 +9,40 @@ export default function Hero() {
     useCurrentSection(heroRef, '-300px', '/')
 
     return (
-        <section className={styles.Hero} id="main" ref={heroRef}>
-            <div className={styles.heroContainer}>
-                <h1 className={styles.intro}>Hi! I{`'`}m </h1>
-                <div className={styles.nameAndRol}>
-                    <div className={styles.nameContainer}>
-                        <div className={styles.name}>
-                            {'<'}Maveryck Maya{'/>'}
-                        </div>
-                    </div>
-                    <p className={styles.rol}>Frontend developer</p>
-                </div>
-                <p className={styles.quote}>
-                    <q className={styles.quotePhrase}>
-                        “You must have chaos within you to give birth to a
-                        dancing star.”
-                    </q>
-                    {'  '}-{' '}
-                    <strong className={styles.quoteAuthor}>
-                        Friedrich Nietzsche
-                    </strong>
-                </p>
-                <div className={styles.avatarImageContainer}>
+        <section className={styles['hero--section']} id="main" ref={heroRef}>
+            <div className={styles['hero--container']}>
+                <div className={styles['avatar-image--container']}>
                     <Image
-                        src="/styled-avatar2.svg"
+                        src="/hero/styled-avatar.svg"
                         alt="Maveryck Maya cartoon drawing"
                         width={350}
                         height={350}
-                        className={styles.avatarImage}
+                        priority
+                        layout="intrinsic"
+                        className={styles['avatar-image']}
                     />
+                </div>
+
+                <div className={styles['text--container']}>
+                    <h1 className={styles['greeting']}>Hi! I{`'`}m </h1>
+
+                    <div className={styles['name-rol--container']}>
+                        <div className={styles['name-animation--container']}>
+                            <h1 className={styles['name']}>
+                                {'<'}Maveryck Maya{'/>'}
+                            </h1>
+                        </div>
+                        <p className={styles['rol']}>Frontend developer</p>
+                    </div>
+
+                    <p className={styles['quote--container']}>
+                        <q className={styles['quote-phrase']}>
+                            “Beyond all ideas of right and wrong there is a
+                            field, I will be meeting you there.”
+                        </q>
+                        {'  '}-{' '}
+                        <strong className={styles['quote-author']}>Rumi</strong>
+                    </p>
                 </div>
             </div>
         </section>

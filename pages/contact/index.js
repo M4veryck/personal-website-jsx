@@ -3,7 +3,7 @@ import Link from 'next/link'
 import styles from '../../styles/Contact/Contact.module.scss'
 import { validateEmail } from '../../utils/utils'
 import { useEffect, useState, useRef } from 'react'
-import emailjs, { init, send } from '@emailjs/browser'
+import emailjs, { init } from '@emailjs/browser'
 import useCurrentSection from '../../components/hooks/useCurrentSection'
 init('iZu4cY_9HYBlPdW9q')
 
@@ -92,6 +92,17 @@ export default function Contact() {
 
     return (
         <section className={styles.contact} ref={contactRef}>
+            {/* <div className={styles['background--container']}>
+                <Image
+                    src="/backgrounds/contact-background.svg"
+                    alt="background image"
+                    layout="fill"
+                    objectFit="cover"
+                    objectPosition="center"
+                    priority
+                    className={styles['background-image']}
+                />
+            </div> */}
             <div className={styles.contactContainer}>
                 <h2 className={styles.title}>Contact me</h2>
                 <p className={styles.desc}>
@@ -103,7 +114,7 @@ export default function Contact() {
                         <p className={styles.successMessage}>
                             <div className={styles.iconContainer}>
                                 <Image
-                                    src="/checked-icon2.svg"
+                                    src="/icons/checked-icon.svg"
                                     alt="checked mark"
                                     width={40}
                                     height={40}
@@ -122,7 +133,7 @@ export default function Contact() {
                     <p className={styles.failureMessage}>
                         <div className={styles.iconContainer}>
                             <Image
-                                src="/error-icon.svg"
+                                src="/icons/error-icon.svg"
                                 alt="checked mark"
                                 width={40}
                                 height={40}

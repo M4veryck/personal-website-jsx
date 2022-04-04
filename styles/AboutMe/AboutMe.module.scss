@@ -4,27 +4,35 @@
     display: grid;
     width: 100%;
 
-    background-color: #f3f3f3;
-    background-image: url('/purple-background3.svg');
+    background-color: rgb(15, 15, 15);
+    background-image: url('/backgrounds/demo-about-background.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    color: $light-color;
 }
 
 .about-me--container {
     display: grid;
-
     width: 90%;
+
+    // padding-block: 3em;
+    // border-block: 1px solid rgb(241, 241, 241);
     margin-block: 5em;
     margin-inline: auto;
 
     a {
-        color: $dark-color;
+        color: $light-color;
 
         &:hover,
         &:focus-visible {
-            color: $light-color;
+            color: $accent-color;
         }
+    }
+
+    strong {
+        color: #fff;
     }
 }
 
@@ -55,7 +63,7 @@
         justify-self: end;
 
         padding-right: 1em;
-        border-right: 3px solid $third-color;
+        border-right: 3px solid $accent-color;
         margin-right: 1em;
 
         text-align: end;
@@ -66,13 +74,14 @@
     width: 45%;
     max-width: 176px;
 
-    border: 2px solid #0c566d;
+    border: 2px solid $accent-color;
     margin-bottom: 2em;
     margin-inline: auto;
 
     text-align: center;
     font-weight: 600;
-    color: #0c566d;
+    // color: #0c566d;
+    color: $accent-color;
     font-size: 1.3rem;
 }
 
@@ -94,25 +103,16 @@
 .skills-title {
     width: fit-content;
 
-    border-bottom: 2px solid #0c566d;
+    border-bottom: 2px solid $accent-color;
     margin: 0em;
     margin-inline: auto;
 
     font-size: 1.1rem;
-    font-weight: 500;
-    color: #0c566d;
+    font-weight: 600;
+    color: $accent-color;
     text-align: center;
     letter-spacing: 0.1em;
 }
-
-// .skills {
-//     margin-top: 0;
-//     margin-inline: auto;
-
-//     &:last-child {
-//         margin-bottom: 0;
-//     }
-// }
 
 .skills-list {
     width: 60%;
@@ -126,13 +126,15 @@
         width: 100%;
         max-width: 120px;
 
-        background-color: #dfdfdf;
+        // background-color: #3d10b8;
+        background-color: $light-color;
         padding-block: 0.25em;
+        border-radius: 2px;
         margin-block: 1em;
         margin-inline: auto;
 
         text-align: center;
-        color: #0c566d;
+        color: $dark-color;
         font-weight: 500;
         font-size: 0.75rem;
     }
@@ -262,17 +264,19 @@
         width: 2em;
         height: 2em;
 
-        border: 3px solid #0c566d;
+        // border: 3px solid #0c566d;
+        border: 3px solid $accent-color;
         border-radius: 50%;
         margin-top: 0;
         margin-bottom: 1em;
         margin-inline: auto;
 
-        // font-size: 1.2rem;
+        font-size: 1.2rem;
         font-weight: $bold;
-        line-height: 1.8;
+        line-height: 1.7;
         text-align: center;
-        color: #0c566d;
+        // color: #0c566d;
+        color: $accent-color;
     }
 
     .description {
@@ -283,7 +287,7 @@
         height: 200px;
 
         padding-top: 0.5em;
-        border-top: 2px solid #0c566d;
+        border-top: 2px solid $accent-color;
         margin: 0;
 
         text-align: center;
@@ -305,9 +309,22 @@
 
     .just-skills {
         margin-top: 0;
+        margin-bottom: 3em;
+
+        font-size: 1.6rem;
     }
 }
 
 @media (min-width: 1200px) {
     @include addTo1Rem(0.1);
+}
+
+@media (min-width: 1400px) {
+    .descriptions--wrapper {
+        margin-block: 4em;
+    }
+
+    .just-skills {
+        margin-bottom: 4em;
+    }
 }

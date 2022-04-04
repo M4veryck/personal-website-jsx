@@ -1,11 +1,7 @@
-import Image from 'next/image'
-import Link from 'next/link'
 import styles from '../styles/Projects/Projects.module.scss'
 import Project from '../components/projects/project'
 import { projectsData } from '../components/projects/projectsData'
-import { useRef, useEffect } from 'react'
-import useIntersection from '../components/hooks/useIntersection'
-import { NavBarContextConsumer } from '../components/navBarContext'
+import { useRef } from 'react'
 import useCurrentSection from '../components/hooks/useCurrentSection'
 
 export default function Projects() {

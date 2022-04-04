@@ -28,7 +28,7 @@ export default function Header() {
             <Link href="/#main">
                 <a className={styles.logoLink}>
                     <Image
-                        src="/MMaveryck.svg"
+                        src="/logos/MMaveryck.svg"
                         alt=""
                         width={250}
                         height={50}

@@ -1,7 +1,4 @@
-import { useEffect } from 'react'
-
 import Link from 'next/link'
-import Image from 'next/image'
 import styles from '../../../styles/Layout/Footer.module.scss'
 import PersonalLink from './personalLink'
 import Icon from './icon'

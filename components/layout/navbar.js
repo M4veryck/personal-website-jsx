@@ -1,7 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import styles from '../../styles/Layout/Navbar.module.scss'
-import { useRouter, useState } from 'next/router'
 import { NavBarContextConsumer } from '../navBarContext'
 
 export default function Navbar({ navOn, toggleNav }) {

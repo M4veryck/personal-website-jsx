@@ -4,18 +4,38 @@
     display: grid;
     justify-items: center;
     background-color: #f3f3f3;
-    background-image: url('/white-background.svg');
+    background-image: url('/backgrounds/demo-contact-background.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 
+    // .background--container {
+    //     position: absolute;
+    //     top: 10vh;
+    //     left: 0;
+    //     width: 100%;
+    //     height: 100%;
+    //     z-index: 1;
+    // }
+
+    // .background-image {
+    //     z-index: 0;
+    // }
     // padding: 1em;
 
     .contactContainer {
         width: 90%;
         max-width: 400px;
+
+        padding: 3em;
         // margin: 3em 2em;
+        background-color: rgb(243, 243, 243);
         margin-block: 4em;
+        border-radius: 3px;
+
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+            rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+            rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
         .title {
             @include h2-styles();
@@ -38,7 +58,7 @@
             background-color: $accent-color;
             padding: 1em 2.5em;
             border: none;
-            border-radius: 5px;
+            border-radius: 3px;
 
             font-family: $primary-font;
             font-size: 1.2rem;
@@ -63,6 +83,10 @@
                 background-color: #c0c0c0;
                 cursor: not-allowed;
             }
+        }
+
+        .sendButton {
+            justify-self: end;
         }
 
         .successMessage,
@@ -143,7 +167,7 @@
     }
 }
 
-@media (min-width: 1281px) {
+@media (min-width: 1201px) {
     // .contactContainer {
     //     animation: slideFromAbove 2s linear;
     // }

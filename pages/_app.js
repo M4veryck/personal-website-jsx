@@ -1,6 +1,5 @@
 import '../styles/globals.scss'
 import Layout from '../components/layout/layout'
-import { useState } from 'react'
 import { NavBarContextProvider } from '../components/navBarContext'
 
 function MyApp({ Component, pageProps }) {

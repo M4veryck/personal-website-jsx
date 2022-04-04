@@ -1,7 +1,7 @@
 const projectsData = [
     {
         id: '1',
-        imgSrc: '/unit-converter3.png',
+        imgSrc: '/projects/unit-converter.png',
         imgAlt: 'Unit converter app',
         projectTitle: 'Unit Converter',
         projectDesc:
@@ -10,7 +10,7 @@ const projectsData = [
 
     {
         id: '2',
-        imgSrc: '/pw-generator2.png',
+        imgSrc: '/projects/pw-generator.png',
         imgAlt: 'Password generator app',
         projectTitle: 'Password Generator',
         projectDesc:
@@ -19,7 +19,7 @@ const projectsData = [
 
     {
         id: '3',
-        imgSrc: '/travel-journal2.png',
+        imgSrc: '/projects/travel-journal.png',
         imgAlt: 'Travel Journal website',
         projectTitle: 'Travel Journal',
         projectDesc:

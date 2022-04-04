@@ -1,9 +1,7 @@
-import { useState, useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import Link from 'next/link'
 
 import styles from '../styles/AboutMe/AboutMe.module.scss'
-import useIntersection from '../components/hooks/useIntersection'
-import { NavBarContextConsumer } from '../components/navBarContext'
 import useCurrentSection from '../components/hooks/useCurrentSection'
 
 export default function AboutMe() {
@@ -38,7 +36,7 @@ export default function AboutMe() {
                         <Link href="https://scrimba.com">
                             <a target="_blank">Scrimba</a>
                         </Link>
-                        , I learned the fundamentals about{' '}
+                        , I learned the basics about{' '}
                         <strong>Responsive Design, UI and UX</strong>, which
                         allows me to develop quality content.
                     </p>
@@ -54,7 +52,6 @@ export default function AboutMe() {
                         <ul className={styles['skills-list']}>
                             <li>HTML</li>
                             <li>CSS</li>
-                            <li>UI / UX</li>
                             <li>Sass</li>
                             <li>JavaScript</li>
                             <li>React</li>
