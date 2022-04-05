@@ -31,7 +31,7 @@ export default function Navbar({ navOn, toggleNav }) {
                             }`}
                             onClick={toggleNav}
                         >
-                            About me
+                            About
                         </a>
                     </Link>
                 </li>

@@ -3,6 +3,8 @@ import Hero from '../components/hero'
 import AboutMe from './#about'
 import Projects from './#projects'
 
+import styles from '../styles/Home.module.scss'
+
 export default function Home() {
     return (
         <>
@@ -15,9 +17,11 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Hero />
-            <AboutMe />
-            <Projects />
+            <div className={styles['index--container']}>
+                <Hero />
+                <AboutMe />
+                <Projects />
+            </div>
         </>
     )
 }

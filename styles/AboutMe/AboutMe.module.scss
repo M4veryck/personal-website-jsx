@@ -129,7 +129,8 @@
         // background-color: #3d10b8;
         background-color: $light-color;
         padding-block: 0.25em;
-        border-radius: 2px;
+        border-radius: 50px;
+
         margin-block: 1em;
         margin-inline: auto;
 
@@ -162,10 +163,6 @@
 
 @media (min-width: 462px) {
     @include addTo1Rem(0);
-
-    .all-skills--wrapper {
-        grid-template-columns: repeat(3, minmax(120px, 1fr));
-    }
 
     .frontend-skills {
         grid-column: 2 / 3;
@@ -231,6 +228,185 @@
     }
 }
 
+// TESTING !!!!!!!!!!!!!!!!!!1111
+
+@media (min-width: 1050px) {
+    .about-me--section {
+        background-color: unset;
+        background-image: unset;
+        min-height: 950px;
+    }
+
+    .about-me--container {
+        grid-template-columns: 10% 40% 50%;
+        // grid-template-columns: 10% 50% 40%;
+        width: 90%;
+        // padding-block: 8em;
+        padding-block: 2.2rem * 3;
+        border-block: 2px solid rgb(209, 209, 209);
+        margin-block: 0;
+    }
+
+    .overlap-div {
+        position: relative;
+        left: -5%;
+        // right: -5%;
+    }
+
+    .overlap-div {
+        background-image: url('/backgrounds/demo-about-background.svg');
+        // box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        //     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        //     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+            rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        padding: 2em;
+        border-radius: 3px;
+        grid-column: 3 / 4;
+        // grid-column: 2 / 3;
+        height: 100%;
+        width: 100%;
+        justify-self: end;
+        // justify-self: start;
+        // z-index: 1;
+    }
+
+    .title {
+        margin-block: 1em;
+    }
+
+    .description {
+        margin-block: 15.2%;
+        margin-inline: auto;
+        width: 90%;
+        max-width: 520px;
+        // height: 25%;
+        &:nth-of-type(2) {
+            max-width: 520px;
+
+            margin-inline: auto;
+        }
+    }
+
+    .skills--col {
+        grid-row: 1 / 2;
+        grid-column: 2 / 3;
+        // grid-column: 3 / 4;
+        background-color: $soft-light-color;
+        padding: 1em;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+            rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        height: 85%;
+        width: 100%;
+
+        margin-top: 10%;
+        // margin-right: -5%;
+        z-index: 2;
+        // column-gap: 555%;
+    }
+
+    .just-skills,
+    .skills-title {
+        color: $fourth-color;
+        border-color: $fourth-color;
+    }
+
+    .skills-list {
+        width: 90%;
+        max-width: 300px;
+        grid-row: initial;
+
+        li {
+            background-color: rgb(182, 182, 182);
+
+            color: rgb(0, 0, 0);
+        }
+    }
+
+    // .title {
+    //     grid-area: title;
+    // }
+
+    .all-skills--wrapper {
+        grid-template-columns: repeat(2, minmax(120px, 1fr));
+        grid-row: 2 / 3;
+        justify-content: space-between;
+        row-gap: 1em;
+        width: 100%;
+    }
+
+    .skills--subsection {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .frontend-skills,
+    .backend-skills,
+    .others-skills {
+        grid-row: auto;
+        grid-column: auto;
+    }
+
+    // .backend-skills,
+    // .others-skills {
+    //     grid-row: auto;
+    // }
+
+    // .descriptions--wrapper {
+    //     grid-area: descriptionsWrapper;
+    // }
+
+    // .about-me--container {
+    //     width: 100%;
+    // }
+
+    // .title,
+    // .descriptions--wrapper {
+    //     grid-column: 1 / 2;
+    // }
+
+    // .just-skills,
+    // .all-skills--wrapper {
+    //     grid-column: 2 / 3;
+    //     height: fit-content;
+    // }
+
+    // .about-me--container {
+    //     width: 100%;
+    // }
+
+    // .title,
+    // .descriptions--wrapper {
+    //     grid-column: 2 / 3;
+    //     margin: 0;
+    // }
+
+    // .title,
+    // .description {
+    //     width: 100%;
+    //     max-width: 1000px;
+
+    //     &:nth-of-type(2) {
+    //         margin: 0;
+    //     }
+    // }
+
+    // .just-skills,
+    // .all-skills--wrapper {
+    //     grid-column: 1 / 2;
+    // }
+}
+
+// @media (min-width: 1161px) {
+//     .frontend-skills {
+//         grid-column: 2 / 3;
+//     }
+
+//     .others-skills {
+//         grid-row: 1 / 2;
+//     }
+// }
+
 @mixin bigWSection($column-space) {
     width: 100%;
     display: grid;
@@ -239,92 +415,92 @@
     justify-items: center;
 }
 
-@media (min-width: 1000px) {
-    @include addTo1Rem(0);
+// @media (min-width: 1000px) {
+//     @include addTo1Rem(0);
 
-    .about-me--container {
-        width: 90%;
-    }
+//     .about-me--container {
+//         width: 90%;
+//     }
 
-    .descriptions--wrapper {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(250px, 1fr));
-        column-gap: 2em;
-        align-self: center;
-        align-items: flex-start;
+//     .descriptions--wrapper {
+//         display: grid;
+//         grid-template-columns: repeat(3, minmax(250px, 1fr));
+//         column-gap: 2em;
+//         align-self: center;
+//         align-items: flex-start;
 
-        margin-block: 3em;
-    }
+//         margin-block: 3em;
+//     }
 
-    .description-number {
-        display: grid;
-        grid-row: 1 / 2;
-        align-self: center;
-        justify-self: center;
-        width: 2em;
-        height: 2em;
+//     .description-number {
+//         display: grid;
+//         grid-row: 1 / 2;
+//         align-self: center;
+//         justify-self: center;
+//         width: 2em;
+//         height: 2em;
 
-        // border: 3px solid #0c566d;
-        border: 3px solid $accent-color;
-        border-radius: 50%;
-        margin-top: 0;
-        margin-bottom: 1em;
-        margin-inline: auto;
+//         // border: 3px solid #0c566d;
+//         border: 3px solid $accent-color;
+//         border-radius: 50%;
+//         margin-top: 0;
+//         margin-bottom: 1em;
+//         margin-inline: auto;
 
-        font-size: 1.2rem;
-        font-weight: $bold;
-        line-height: 1.7;
-        text-align: center;
-        // color: #0c566d;
-        color: $accent-color;
-    }
+//         font-size: 1.2rem;
+//         font-weight: $bold;
+//         line-height: 1.7;
+//         text-align: center;
+//         // color: #0c566d;
+//         color: $accent-color;
+//     }
 
-    .description {
-        grid-row: 2 / 3;
-        justify-self: center;
-        width: 100%;
-        max-width: 300px;
-        height: 200px;
+//     .description {
+//         grid-row: 2 / 3;
+//         justify-self: center;
+//         width: 100%;
+//         max-width: 300px;
+//         height: 200px;
 
-        padding-top: 0.5em;
-        border-top: 2px solid $accent-color;
-        margin: 0;
+//         padding-top: 0.5em;
+//         border-top: 2px solid $accent-color;
+//         margin: 0;
 
-        text-align: center;
+//         text-align: center;
 
-        &:nth-of-type(2) {
-            width: 100%;
-            max-width: 300px;
-            height: 200px;
-            justify-self: center;
+//         &:nth-of-type(2) {
+//             width: 100%;
+//             max-width: 300px;
+//             height: 200px;
+//             justify-self: center;
 
-            padding: 0;
-            padding-top: 0.5em;
-            border-right: none;
-            margin: 0em;
+//             padding: 0;
+//             padding-top: 0.5em;
+//             border-right: none;
+//             margin: 0em;
 
-            text-align: center;
-        }
-    }
+//             text-align: center;
+//         }
+//     }
 
-    .just-skills {
-        margin-top: 0;
-        margin-bottom: 3em;
+//     .just-skills {
+//         margin-top: 0;
+//         margin-bottom: 3em;
 
-        font-size: 1.6rem;
-    }
-}
+//         font-size: 1.6rem;
+//     }
+// }
 
-@media (min-width: 1200px) {
-    @include addTo1Rem(0.1);
-}
+// @media (min-width: 1200px) {
+//     @include addTo1Rem(0.1);
+// }
 
-@media (min-width: 1400px) {
-    .descriptions--wrapper {
-        margin-block: 4em;
-    }
+// @media (min-width: 1400px) {
+//     .descriptions--wrapper {
+//         margin-block: 4em;
+//     }
 
-    .just-skills {
-        margin-bottom: 4em;
-    }
-}
+//     .just-skills {
+//         margin-bottom: 4em;
+//     }
+// }

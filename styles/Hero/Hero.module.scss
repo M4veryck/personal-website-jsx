@@ -6,11 +6,11 @@
     height: 90vh;
     max-height: 800px;
 
-    background-color: #f3f3f3;
-    background-image: url('/backgrounds/demo2-hero-background.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    // background-color: #f3f3f3;
+    // background-image: url('/backgrounds/demo2-hero-background.svg');
+    // background-position: center;
+    // background-repeat: no-repeat;
+    // background-size: cover;
 }
 
 .hero--container {
@@ -145,11 +145,15 @@
 
 @media (max-width: 739px) {
     .hero--section {
-        min-height: 700px;
+        min-height: 800px;
     }
 
     .hero--container {
         min-height: 550px;
+    }
+
+    .text--container {
+        max-height: 350px;
     }
 }
 

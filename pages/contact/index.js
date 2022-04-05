@@ -14,9 +14,9 @@ export default function Contact() {
         message: '',
     })
     const [success, setSuccess] = useState(null)
-    const [disabledButton, setDisabledButton] = useState(true)
+    const [disabledButton, setDisabledButton] = useState(false)
     const [validEmail, setValidEmail] = useState(true)
-    const [validForm, setValidForm] = useState(false)
+    const [validForm, setValidForm] = useState(true)
     const contactRef = useRef()
     useCurrentSection(contactRef, '0px', '/contact')
 
@@ -38,34 +38,59 @@ export default function Contact() {
         setValidEmail(validateEmail(value))
     }
 
-    useEffect(() => {
-        const userEmail = formData.user_email
-        setValidForm(isFormFilled(formData) && validateEmail(userEmail))
+    // useEffect(() => {
+    //     const userEmail = formData.user_email
+    //     setValidForm(isFormFilled(formData) && validateEmail(userEmail))
 
-        setDisabledButton(!isFormFilled(formData) || !validateEmail(userEmail))
-    }, [formData])
+    //     setDisabledButton(!isFormFilled(formData) || !validateEmail(userEmail))
+    // }, [formData])
 
-    useEffect(() => {
-        const sendBtn = document.getElementById('send-btn')
-        sendBtn.addEventListener(
-            'click',
-            () => (sendBtn.textContent = 'Loading...')
-        )
-        return () => {
-            sendBtn.removeEventListener(
-                'click',
-                () => (sendBtn.textContent = 'Loading...')
-            )
-        }
-    }, [])
+    // useEffect(() => {
+    //     const sendBtn = document.getElementById('send-btn')
+    //     sendBtn.addEventListener('click', () => {
+    //         if (validForm) {
+    //             sendBtn.textContent = 'Loading...'
+    //             return
+    //         }
+    //         sendBtn.textContent = 'Send'
+    //     })
+    //     return () => {
+    //         sendBtn.removeEventListener('click', () => {
+    //             if (validForm) {
+    //                 sendBtn.textContent = 'Loading...'
+    //                 return
+    //             }
+    //             sendBtn.textContent = 'Send'
+    //         })
+    //     }
+    // }, [])
+
+    const handleInvalidSend = () => {
+        // setFormData({
+        //     user_name: '',
+        //     user_email: '',
+        //     message: '',
+        // })
+
+        setValidForm(false)
+        setDisabledButton(false)
+    }
 
     const sendEmail = e => {
         e.preventDefault()
 
-        if (!validForm) {
-            setSuccess(false)
-            return
-        }
+        // if (!(isFormFilled(formData) && validateEmail(userEmail))) {
+        //     setFormData({
+        //         user_name: '',
+        //         user_email: '',
+        //         message: '',
+        //     })
+
+        //     setValidForm(false)
+        //     setDisabledButton(false)
+
+        //     return
+        // }
 
         emailjs
             .send('contact_service', 'contact_form', formData)
@@ -106,8 +131,9 @@ export default function Contact() {
             <div className={styles.contactContainer}>
                 <h2 className={styles.title}>Contact me</h2>
                 <p className={styles.desc}>
-                    If you are interested in <strong>hiring me</strong> or any
-                    other inquiries, please fill up the form.
+                    If you are interested in <strong>hiring me</strong>,
+                    providing feedback, or any other inquiries, please fill up
+                    the form.
                 </p>
                 {success ? (
                     <>
@@ -144,7 +170,9 @@ export default function Contact() {
                     </p>
                 ) : (
                     <form className={styles.form} onSubmit={sendEmail}>
-                        <label htmlFor="user_name">Name</label>
+                        <label htmlFor="user_name">
+                            Name <span className={styles['required']}>*</span>
+                        </label>
                         <input
                             type="text"
                             name="user_name"
@@ -152,9 +180,12 @@ export default function Contact() {
                             onChange={handleChange}
                             value={formData.user_name}
                             className={styles.userName}
+                            required
                         />
 
-                        <label htmlFor="user_email">Email</label>
+                        <label htmlFor="user_email">
+                            Email <span className={styles['required']}>*</span>
+                        </label>
                         <input
                             type="email"
                             name="user_email"
@@ -162,6 +193,7 @@ export default function Contact() {
                             onChange={handleEmail}
                             value={formData.user_email}
                             className={styles.userEmail}
+                            required
                         />
                         {!validEmail && (
                             <p className={styles.invalidEmailMsg}>
@@ -169,17 +201,24 @@ export default function Contact() {
                             </p>
                         )}
 
-                        <label htmlFor="message">Message</label>
+                        <label htmlFor="message">
+                            Message{' '}
+                            <span className={styles['required']}>*</span>
+                        </label>
                         <textarea
                             name="message"
                             id="message"
                             onChange={handleChange}
                             value={formData.message}
                             className={styles.message}
+                            required
                         />
 
-                        {!validForm && (
+                        <p className={styles['required']}>* Required</p>
+
+                        {!validForm && !isFormFilled(formData) && (
                             <p className={styles.failureMessage}>
+                                {' '}
                                 All fields are required
                             </p>
                         )}
@@ -187,6 +226,18 @@ export default function Contact() {
                         <button
                             disabled={disabledButton}
                             onClick={e => {
+                                if (
+                                    !(
+                                        isFormFilled(formData) &&
+                                        validateEmail(formData.user_email)
+                                    )
+                                ) {
+                                    handleInvalidSend()
+                                    return
+                                }
+                                const sendBtn =
+                                    document.getElementById('send-btn')
+                                sendBtn.textContent = 'Loading...'
                                 setDisabledButton(true)
                                 sendEmail(e)
                             }}

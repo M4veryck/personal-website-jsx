@@ -30,7 +30,7 @@
         padding: 3em;
         // margin: 3em 2em;
         background-color: rgb(243, 243, 243);
-        margin-block: 4em;
+        margin-block: 2.2rem * 3;
         border-radius: 3px;
 
         box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
@@ -161,6 +161,10 @@
                 height: 100px;
 
                 padding-block: 3px;
+            }
+
+            .required {
+                color: rgb(230, 33, 33);
                 margin-bottom: 3em;
             }
         }
