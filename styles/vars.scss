@@ -1,4 +1,4 @@
-$primary-font: 'Poppins';
+$primary-font: 'Inter';
 $bold: 700;
 
 $light-color: #f3f3f3;
@@ -21,7 +21,10 @@ $fs-h2: 2.2rem;
     // color: #5d3080;
     // border: 2px solid #5d3080;
     color: $accent-color;
+    // color: $fourth-color;
     border: 2px solid $accent-color;
+    // border: 2px solid $fourth-color;
     width: 10em;
     margin: 0 auto 1em;
+    padding-block: 0.25em;
 }

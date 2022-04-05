@@ -6,7 +6,7 @@ import useCurrentSection from '../components/hooks/useCurrentSection'
 
 export default function Projects() {
     const projectsRef = useRef()
-    useCurrentSection(projectsRef, '-300px', '/#projects')
+    useCurrentSection(projectsRef, '-50%', '/#projects')
 
     const Projects = projectsData.map(
         ({ id, imgSrc, imgAlt, projectTitle, projectDesc }) => {

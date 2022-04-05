@@ -6,14 +6,14 @@ import useCurrentSection from '../hooks/useCurrentSection'
 
 export default function Hero() {
     const heroRef = useRef()
-    useCurrentSection(heroRef, '-300px', '/')
+    useCurrentSection(heroRef, '-50%', '/')
 
     return (
         <section className={styles['hero--section']} id="main" ref={heroRef}>
             <div className={styles['hero--container']}>
                 <div className={styles['avatar-image--container']}>
                     <Image
-                        src="/hero/styled-avatar.svg"
+                        src="/hero/demo-styled-avatar.svg"
                         alt="Maveryck Maya cartoon drawing"
                         width={350}
                         height={350}

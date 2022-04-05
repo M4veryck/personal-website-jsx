@@ -12,6 +12,7 @@
 }
 
 .projectContainer {
+    z-index: 2;
     max-width: 90%;
     margin-block: 5em;
     display: grid;
@@ -28,6 +29,7 @@
     // border-color: rgb(11, 10, 77);
     margin-top: 3em;
     margin-bottom: 0;
+    z-index: 2;
 }
 
 .project {

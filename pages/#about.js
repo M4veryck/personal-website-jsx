@@ -6,7 +6,7 @@ import useCurrentSection from '../components/hooks/useCurrentSection'
 
 export default function AboutMe() {
     const aboutRef = useRef()
-    useCurrentSection(aboutRef, '-300px', '/#about')
+    useCurrentSection(aboutRef, '-50%', '/#about')
 
     return (
         <section

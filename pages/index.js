@@ -1,11 +1,36 @@
+import Image from 'next/image'
+
+import Layout from '../components/layout/layout'
 import Head from 'next/head'
 import Hero from '../components/hero'
 import AboutMe from './#about'
 import Projects from './#projects'
 
 import styles from '../styles/Home.module.scss'
+import { useEffect } from 'react'
 
 export default function Home() {
+    useEffect(() => {
+        const box = document.getElementById('box')
+        const imTired = document.getElementById('im-tired')
+        box.style.height = `${imTired.offsetHeight}px`
+
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', () => {
+                box.style.height = `${imTired.offsetHeight}px`
+                console.log(imTired.offsetHeight)
+            })
+        }
+
+        return () => {
+            if (typeof window !== 'undefined') {
+                window.removeEventListener('resize', () => {
+                    box.style.height = `${imTired.offsetHeight}px`
+                    console.log(imTired.offsetHeight)
+                })
+            }
+        }
+    }, [])
     return (
         <>
             <Head>
@@ -17,11 +42,27 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <div className={styles['index--container']}>
-                <Hero />
-                <AboutMe />
-                <Projects />
-            </div>
+            {/* <div className={styles['index--container']}> */}
+            <Layout>
+                <div className={styles['im-tired']} id="im-tired">
+                    <Hero />
+                    <AboutMe />
+                    <Projects />
+                </div>
+                <div className={styles['box']} id="box">
+                    <Image
+                        src="/backgrounds/index-background.svg"
+                        alt="background decoration"
+                        layout="fill"
+                        // width={3000}
+                        // height={8000}
+                        objectFit="cover"
+                        quality={100}
+                        priority
+                    />
+                </div>
+            </Layout>
+            {/* </div> */}
         </>
     )
 }

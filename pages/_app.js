@@ -5,9 +5,9 @@ import { NavBarContextProvider } from '../components/navBarContext'
 function MyApp({ Component, pageProps }) {
     return (
         <NavBarContextProvider>
-            <Layout>
-                <Component {...pageProps} />
-            </Layout>
+            {/* <Layout> */}
+            <Component {...pageProps} />
+            {/* </Layout> */}
         </NavBarContextProvider>
     )
 }

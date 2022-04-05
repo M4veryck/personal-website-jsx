@@ -5,6 +5,7 @@ import { validateEmail } from '../../utils/utils'
 import { useEffect, useState, useRef } from 'react'
 import emailjs, { init } from '@emailjs/browser'
 import useCurrentSection from '../../components/hooks/useCurrentSection'
+import Layout from '../../components/layout/layout'
 init('iZu4cY_9HYBlPdW9q')
 
 export default function Contact() {
@@ -116,8 +117,9 @@ export default function Contact() {
     }
 
     return (
-        <section className={styles.contact} ref={contactRef}>
-            {/* <div className={styles['background--container']}>
+        <Layout>
+            <section className={styles.contact} ref={contactRef}>
+                {/* <div className={styles['background--container']}>
                 <Image
                     src="/backgrounds/contact-background.svg"
                     alt="background image"
@@ -128,127 +130,142 @@ export default function Contact() {
                     className={styles['background-image']}
                 />
             </div> */}
-            <div className={styles.contactContainer}>
-                <h2 className={styles.title}>Contact me</h2>
-                <p className={styles.desc}>
-                    If you are interested in <strong>hiring me</strong>,
-                    providing feedback, or any other inquiries, please fill up
-                    the form.
-                </p>
-                {success ? (
-                    <>
-                        <p className={styles.successMessage}>
+                <div className={styles.contactContainer}>
+                    {success ? (
+                        <>
+                            <p className={styles.successMessage}>
+                                <div className={styles.iconContainer}>
+                                    <Image
+                                        src="/icons/checked-icon.svg"
+                                        alt="checked mark"
+                                        width={40}
+                                        height={40}
+                                    />
+                                </div>
+                                Email sent succesfully! <br /> I{`'`}ll be in
+                                contact with you as soon as possible
+                            </p>
+                            <div className={styles.goHomeContainer}>
+                                <Link href="/">
+                                    <a className={styles.goHome}>Home</a>
+                                </Link>
+                            </div>
+                        </>
+                    ) : success === false ? (
+                        <p className={styles.failureMessage}>
                             <div className={styles.iconContainer}>
                                 <Image
-                                    src="/icons/checked-icon.svg"
+                                    src="/icons/error-icon.svg"
                                     alt="checked mark"
                                     width={40}
                                     height={40}
                                 />
                             </div>
-                            Email sent succesfully! <br /> I{`'`}ll be in
-                            contact with you as soon as possible
+                            Something went wrong :{`(`} <br /> Please refresh
+                            and try again.
                         </p>
-                        <div className={styles.goHomeContainer}>
-                            <Link href="/">
-                                <a className={styles.goHome}>Home</a>
-                            </Link>
-                        </div>
-                    </>
-                ) : success === false ? (
-                    <p className={styles.failureMessage}>
-                        <div className={styles.iconContainer}>
-                            <Image
-                                src="/icons/error-icon.svg"
-                                alt="checked mark"
-                                width={40}
-                                height={40}
-                            />
-                        </div>
-                        Something went wrong :{`(`} <br /> Please refresh and
-                        try again.
-                    </p>
-                ) : (
-                    <form className={styles.form} onSubmit={sendEmail}>
-                        <label htmlFor="user_name">
-                            Name <span className={styles['required']}>*</span>
-                        </label>
-                        <input
-                            type="text"
-                            name="user_name"
-                            id="user_name"
-                            onChange={handleChange}
-                            value={formData.user_name}
-                            className={styles.userName}
-                            required
-                        />
-
-                        <label htmlFor="user_email">
-                            Email <span className={styles['required']}>*</span>
-                        </label>
-                        <input
-                            type="email"
-                            name="user_email"
-                            id="user_email"
-                            onChange={handleEmail}
-                            value={formData.user_email}
-                            className={styles.userEmail}
-                            required
-                        />
-                        {!validEmail && (
-                            <p className={styles.invalidEmailMsg}>
-                                ! Invalid Email
+                    ) : (
+                        <>
+                            <h2 className={styles.title}>Contact me</h2>
+                            <p className={styles.desc}>
+                                If you are interested in{' '}
+                                <strong>hiring me</strong>, providing feedback,
+                                or any other inquiries, please fill up the form.
                             </p>
-                        )}
+                            <form className={styles.form} onSubmit={sendEmail}>
+                                <label htmlFor="user_name">
+                                    Name{' '}
+                                    <span className={styles['required']}>
+                                        *
+                                    </span>
+                                </label>
+                                <input
+                                    type="text"
+                                    name="user_name"
+                                    id="user_name"
+                                    onChange={handleChange}
+                                    value={formData.user_name}
+                                    className={styles.userName}
+                                    required
+                                />
 
-                        <label htmlFor="message">
-                            Message{' '}
-                            <span className={styles['required']}>*</span>
-                        </label>
-                        <textarea
-                            name="message"
-                            id="message"
-                            onChange={handleChange}
-                            value={formData.message}
-                            className={styles.message}
-                            required
-                        />
+                                <label htmlFor="user_email">
+                                    Email{' '}
+                                    <span className={styles['required']}>
+                                        *
+                                    </span>
+                                </label>
+                                <input
+                                    type="email"
+                                    name="user_email"
+                                    id="user_email"
+                                    onChange={handleEmail}
+                                    value={formData.user_email}
+                                    className={styles.userEmail}
+                                    required
+                                />
+                                {!validEmail && (
+                                    <p className={styles.invalidEmailMsg}>
+                                        ! Invalid Email
+                                    </p>
+                                )}
 
-                        <p className={styles['required']}>* Required</p>
+                                <label htmlFor="message">
+                                    Message{' '}
+                                    <span className={styles['required']}>
+                                        *
+                                    </span>
+                                </label>
+                                <textarea
+                                    name="message"
+                                    id="message"
+                                    onChange={handleChange}
+                                    value={formData.message}
+                                    className={styles.message}
+                                    required
+                                />
 
-                        {!validForm && !isFormFilled(formData) && (
-                            <p className={styles.failureMessage}>
-                                {' '}
-                                All fields are required
-                            </p>
-                        )}
+                                <p className={styles['required']}>* Required</p>
 
-                        <button
-                            disabled={disabledButton}
-                            onClick={e => {
-                                if (
-                                    !(
-                                        isFormFilled(formData) &&
-                                        validateEmail(formData.user_email)
-                                    )
-                                ) {
-                                    handleInvalidSend()
-                                    return
-                                }
-                                const sendBtn =
-                                    document.getElementById('send-btn')
-                                sendBtn.textContent = 'Loading...'
-                                setDisabledButton(true)
-                                sendEmail(e)
-                            }}
-                            className={styles.sendButton}
-                            id="send-btn"
-                        >
-                            Send
-                        </button>
-                    </form>
-                )}
-            </div>
-        </section>
+                                {!validForm && !isFormFilled(formData) && (
+                                    <p
+                                        className={`${styles['failureMessage']} ${styles['fields-required']}`}
+                                    >
+                                        {' '}
+                                        All fields are required
+                                    </p>
+                                )}
+
+                                <button
+                                    disabled={disabledButton}
+                                    onClick={e => {
+                                        if (
+                                            !(
+                                                isFormFilled(formData) &&
+                                                validateEmail(
+                                                    formData.user_email
+                                                )
+                                            )
+                                        ) {
+                                            handleInvalidSend()
+                                            return
+                                        }
+                                        const sendBtn =
+                                            document.getElementById('send-btn')
+                                        sendBtn.textContent = 'Loading...'
+                                        setDisabledButton(true)
+                                        sendEmail(e)
+                                    }}
+                                    className={styles.sendButton}
+                                    id="send-btn"
+                                >
+                                    Send
+                                </button>
+                            </form>
+                        </>
+                    )}
+                </div>
+            </section>
+        </Layout>
     )
 }

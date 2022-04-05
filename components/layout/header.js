@@ -28,10 +28,13 @@ export default function Header() {
             <Link href="/#main">
                 <a className={styles.logoLink}>
                     <Image
-                        src="/logos/MMaveryck.svg"
+                        src="/logos/demo-MMaveryck.svg"
                         alt=""
-                        width={250}
+                        // layout="responsive"
+                        width={180}
                         height={50}
+                        // width={250}
+                        // height={50}
                         className={styles.logo}
                     />
                 </a>

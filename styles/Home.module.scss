@@ -1,6 +1,25 @@
+// .index--container {
+//     background-image: url('/backgrounds/index-background.svg');
+//     background-position: top;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+// }
+
 .index--container {
-    background-image: url('/backgrounds/index-background.svg');
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
+    z-index: 1;
+    min-width: 100vw;
+    height: fit-content;
+    // position: fixed;
+    // justify-content: center;
+    // align-items: center;
+    // display: flex;
+}
+
+.box {
+    position: absolute;
+    z-index: 0;
+    top: 10vh;
+    width: 100%;
+    // min-height: 3000px;
+    height: 100%;
 }

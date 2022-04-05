@@ -2,10 +2,13 @@
 
 .footer {
     display: grid;
+    position: relative;
     justify-items: center;
     background-color: $dark-color;
+    z-index: 2000000000000;
 
     .footerContainer {
+        z-index: 20000000;
         width: 90%;
         margin-block: 3.5em;
 
