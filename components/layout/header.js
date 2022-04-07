@@ -24,29 +24,26 @@ export default function Header() {
     }, [navOn])
 
     return (
-        <header className={styles.header} id="header">
+        <header className={styles['header']} id="header">
             <Link href="/#main">
-                <a className={styles.logoLink}>
+                <a className={styles['logo--link']}>
                     <Image
                         src="/logos/demo-MMaveryck.svg"
                         alt=""
-                        // layout="responsive"
                         width={180}
                         height={50}
-                        // width={250}
-                        // height={50}
-                        className={styles.logo}
+                        className={styles['logo']}
                     />
                 </a>
             </Link>
             <button
-                className={styles.navToggle}
+                className={styles['toggle-nav']}
                 aria-label="toggle navigation"
                 onClick={toggleNav}
             >
                 <span
-                    className={`${styles.hamburger} ${
-                        navOn && styles.hamburgerClicked
+                    className={`${styles['hamburger']} ${
+                        navOn && styles['hamburger-clicked']
                     }`}
                 ></span>
             </button>

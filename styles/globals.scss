@@ -5,18 +5,11 @@ body {
     scroll-behavior: smooth;
     padding: 0;
     margin: 0;
-    font-family: $primary-font, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    @include font-stack('Inter');
 }
 
 * {
     box-sizing: border-box;
-}
-
-p {
-    font-weight: 300 !important;
-    letter-spacing: normal !important;
-    line-height: 1.4 !important;
 }
 
 strong {

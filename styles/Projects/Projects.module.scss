@@ -22,7 +22,7 @@
 }
 
 .title {
-    @include h2-styles();
+    @include h2-styles($clr-accent2);
     color: #005b60;
     border-color: #005b60;
     // color: rgb(11, 10, 77);
@@ -50,7 +50,7 @@
     width: 320px;
     height: 360px;
     position: relative;
-    border: 1.5px solid $dark-color;
+    border: 1.5px solid $clr-dark;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
@@ -71,7 +71,7 @@
 
 .projectTitle,
 .projectDesc {
-    color: $light-color;
+    color: $clr-light;
 }
 
 .projectTitle {
@@ -113,10 +113,10 @@
         align-self: center;
         height: fit-content;
 
-        background-color: $light-color;
+        background-color: $clr-light;
         border: 2px solid black;
 
-        color: $dark-color;
+        color: $clr-dark;
     }
 
     &:last-child {
@@ -124,10 +124,10 @@
         justify-content: center;
         height: fit-content;
 
-        background-color: $dark-color;
-        border: 2px solid $light-color;
+        background-color: $clr-dark;
+        border: 2px solid $clr-light;
 
-        color: $light-color;
+        color: $clr-light;
 
         .linkText {
             display: grid;
@@ -149,7 +149,7 @@
 
             background: #005b60;
 
-            color: $dark-color;
+            color: $clr-dark;
         }
     }
 
@@ -166,8 +166,8 @@
             &:focus-visible {
                 // background-color: #fcff31;
                 background-color: #00c59b;
-                color: $dark-color;
-                border-color: $dark-color;
+                color: $clr-dark;
+                border-color: $clr-dark;
             }
         }
     }

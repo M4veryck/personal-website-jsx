@@ -12,21 +12,20 @@ import { useEffect } from 'react'
 export default function Home() {
     useEffect(() => {
         const box = document.getElementById('box')
-        const imTired = document.getElementById('im-tired')
-        box.style.height = `${imTired.offsetHeight}px`
+        const pageContainer = document.getElementById('page--container')
+        box.style.height = `${pageContainer.offsetHeight + 120}px`
+        console.log(pageContainer.offsetHeight)
 
         if (typeof window !== 'undefined') {
             window.addEventListener('resize', () => {
-                box.style.height = `${imTired.offsetHeight}px`
-                console.log(imTired.offsetHeight)
+                box.style.height = `${pageContainer.offsetHeight + 120}px`
             })
         }
 
         return () => {
             if (typeof window !== 'undefined') {
                 window.removeEventListener('resize', () => {
-                    box.style.height = `${imTired.offsetHeight}px`
-                    console.log(imTired.offsetHeight)
+                    box.style.height = `${pageContainer.offsetHeight}px`
                 })
             }
         }
@@ -42,9 +41,8 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            {/* <div className={styles['index--container']}> */}
             <Layout>
-                <div className={styles['im-tired']} id="im-tired">
+                <div className={styles['page--container']} id="page--container">
                     <Hero />
                     <AboutMe />
                     <Projects />
@@ -54,15 +52,12 @@ export default function Home() {
                         src="/backgrounds/index-background.svg"
                         alt="background decoration"
                         layout="fill"
-                        // width={3000}
-                        // height={8000}
                         objectFit="cover"
                         quality={100}
                         priority
                     />
                 </div>
             </Layout>
-            {/* </div> */}
         </>
     )
 }

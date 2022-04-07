@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import Image from 'next/image'
 
-import styles from '../../styles/Hero/Hero.module.scss'
+import styles from '../../styles/Hero/NewHero.module.scss'
 import useCurrentSection from '../hooks/useCurrentSection'
 
 export default function Hero() {
@@ -11,38 +11,21 @@ export default function Hero() {
     return (
         <section className={styles['hero--section']} id="main" ref={heroRef}>
             <div className={styles['hero--container']}>
-                <div className={styles['avatar-image--container']}>
-                    <Image
-                        src="/hero/demo-styled-avatar.svg"
-                        alt="Maveryck Maya cartoon drawing"
-                        width={350}
-                        height={350}
-                        priority
-                        layout="intrinsic"
-                        className={styles['avatar-image']}
-                    />
+                <div className={styles['name-rol--container']}>
+                    <h1 className={styles['name']}>
+                        <span className={styles['first-name']}>Maveryck </span>
+                        <br />
+                        <span className={styles['last-name']}>Maya</span>
+                    </h1>
+                    <p className={styles['rol']}>Fullstack developer</p>
                 </div>
 
-                <div className={styles['text--container']}>
-                    <h1 className={styles['greeting']}>Hi! I{`'`}m </h1>
-
-                    <div className={styles['name-rol--container']}>
-                        <div className={styles['name-animation--container']}>
-                            <h1 className={styles['name']}>
-                                {'<'}Maveryck Maya{'/>'}
-                            </h1>
-                        </div>
-                        <p className={styles['rol']}>Frontend developer</p>
+                <div className={styles['overlap-div']}>
+                    <div className={styles['ads-text--container']}>
+                        <p className={styles['ads-text']}>Clean design</p>
+                        <p className={styles['ads-text']}>Unique websites</p>
+                        <p className={styles['ads-text']}>Fast solutions</p>
                     </div>
-
-                    <p className={styles['quote--container']}>
-                        <q className={styles['quote-phrase']}>
-                            “Beyond all ideas of right and wrong there is a
-                            field, I will be meeting you there.”
-                        </q>
-                        {'  '}-{' '}
-                        <strong className={styles['quote-author']}>Rumi</strong>
-                    </p>
                 </div>
             </div>
         </section>

@@ -4,7 +4,7 @@
     display: grid;
     position: relative;
     justify-items: center;
-    background-color: $dark-color;
+    background-color: $clr-dark;
     z-index: 2000000000000;
 
     .footerContainer {
@@ -26,14 +26,14 @@
         .attributionsLink {
             &:hover,
             &:focus {
-                color: $accent-color;
+                color: $clr-accent;
             }
         }
 
         .footerLink {
             &:hover,
             &:focus {
-                color: $accent-color;
+                color: $clr-accent;
             }
         }
 
@@ -45,6 +45,7 @@
 
                 .footerLink {
                     width: fit-content;
+                    height: fit-content;
 
                     display: grid;
                     grid-template-columns: 30px auto;
@@ -53,6 +54,19 @@
 
                     text-decoration: none;
                     // color: $light-color;
+
+                    .linkText {
+                        margin-block: 1em;
+                    }
+                }
+
+                &:first-of-type {
+                    .footerLink {
+                        align-items: flex-start;
+                        .linkText {
+                            margin-top: 0.1em;
+                        }
+                    }
                 }
             }
         }
@@ -99,13 +113,13 @@
 
                 &:hover,
                 &:focus {
-                    color: $accent-color;
+                    color: $clr-accent;
                 }
             }
         }
 
         * {
-            color: $light-color;
+            color: $clr-light;
         }
     }
 }
