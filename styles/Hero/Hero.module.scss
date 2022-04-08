@@ -41,7 +41,7 @@
     @include font-stack('Montserrat');
 
     font-size: $fs-h1;
-    font-weight: $bold;
+    font-weight: 600;
 }
 
 .first-name,
@@ -97,7 +97,7 @@
 
     @include background-image(
         $clr-soft-light,
-        url('/backgrounds/demo-hero-background.svg')
+        url('/backgrounds/alt-light-background.svg')
     );
     padding: 2em 0 2em 1.5em;
     border-radius: 3px;

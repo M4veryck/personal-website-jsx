@@ -14,7 +14,6 @@ export default function Home() {
         const box = document.getElementById('box')
         const pageContainer = document.getElementById('page--container')
         box.style.height = `${pageContainer.offsetHeight + 120}px`
-        // console.log(pageContainer.offsetHeight)
 
         if (typeof window !== 'undefined') {
             window.addEventListener('resize', () => {
@@ -23,6 +22,8 @@ export default function Home() {
         }
 
         return () => {
+            box.style.height = `${pageContainer.offsetHeight + 120}px`
+
             if (typeof window !== 'undefined') {
                 window.removeEventListener('resize', () => {
                     box.style.height = `${pageContainer.offsetHeight + 120}px`
@@ -30,6 +31,7 @@ export default function Home() {
             }
         }
     }, [])
+
     return (
         <>
             <Head>
@@ -49,12 +51,11 @@ export default function Home() {
                 </div>
                 <div className={styles['box']} id="box">
                     <Image
-                        src="/backgrounds/index-background.svg"
+                        src="/backgrounds/main-light-background.svg"
                         alt="background decoration"
                         layout="fill"
                         objectFit="cover"
                         quality={100}
-                        // priority
                     />
                 </div>
             </Layout>

@@ -5,7 +5,7 @@ import styles from '../../styles/Contact/Contact.module.scss'
 import { useRef } from 'react'
 import useCurrentSection from '../../components/hooks/useCurrentSection'
 import Layout from '../../components/layout/layout'
-import Form from './form'
+import Form from '../../components/contact/form'
 import useContact, { SEND_OPTIONS } from '../../components/hooks/useContact'
 
 const emailjsId = 'iZu4cY_9HYBlPdW9q'
@@ -34,11 +34,11 @@ export default function Contact() {
 
     return (
         <Layout>
-            <section className={styles.contact} ref={contactRef}>
-                <div className={styles.contactContainer}>
+            <section className={styles['contact--section']} ref={contactRef}>
+                <div className={styles['contact--container']}>
                     {emailjsCase === SEND_OPTIONS.SERVER_ERROR ? (
-                        <div className={styles.failureMessage}>
-                            <div className={styles.iconContainer}>
+                        <div className={styles['failure-message--container']}>
+                            <div className={styles['icon--container']}>
                                 <Image
                                     src="/icons/error-icon.svg"
                                     alt="checked mark"
@@ -46,13 +46,17 @@ export default function Contact() {
                                     height={40}
                                 />
                             </div>
-                            Something went wrong :{`(`} <br /> Please refresh
-                            and try again.
+                            <p className={styles['failure-message']}>
+                                Something went wrong :{`(`} <br /> Please
+                                refresh and try again.
+                            </p>
                         </div>
                     ) : emailjsCase === SEND_OPTIONS.SUCCESS ? (
                         <>
-                            <div className={styles.successMessage}>
-                                <div className={styles.iconContainer}>
+                            <div
+                                className={styles['success-message--container']}
+                            >
+                                <div className={styles['icon--container']}>
                                     <Image
                                         src="/icons/checked-icon.svg"
                                         alt="checked mark"
@@ -60,19 +64,23 @@ export default function Contact() {
                                         height={40}
                                     />
                                 </div>
-                                Email sent succesfully! <br /> I{`'`}ll be in
-                                contact with you as soon as possible
+                                <p className={styles['succes-message']}>
+                                    Email sent succesfully! <br /> I{`'`}ll be
+                                    in contact with you as soon as possible
+                                </p>
                             </div>
-                            <div className={styles.goHomeContainer}>
+                            <div className={styles['go-home--container']}>
                                 <Link href="/">
-                                    <a className={styles.goHome}>Home</a>
+                                    <a className={styles['go-home-btn']}>
+                                        Home
+                                    </a>
                                 </Link>
                             </div>
                         </>
                     ) : (
                         <>
-                            <h2 className={styles.title}>Contact me</h2>
-                            <p className={styles.desc}>
+                            <h2 className={styles['title']}>Contact me</h2>
+                            <p className={styles['description']}>
                                 If you are interested in{' '}
                                 <strong>hiring me</strong>, providing feedback,
                                 or any other inquiries, please fill up the form.

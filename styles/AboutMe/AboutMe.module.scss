@@ -6,12 +6,7 @@
     position: relative;
     z-index: 1;
 
-    // background-color: rgb(15, 15, 15);
-    // background-image: url('/backgrounds/dark-background.svg');
-    // margin-block: 3em;
-
     font-size: $fs-p;
-    // color: $clr-light;
     font-weight: 400;
 
     strong {
@@ -23,7 +18,6 @@
     width: 90%;
     align-self: flex-start;
 
-    // padding-block: 2.2rem * 3;
     border-bottom: 2px solid rgb(182, 182, 182);
     margin-inline: auto;
 }
@@ -213,11 +207,7 @@
     }
 
     .border-decoration {
-        // width: 90%;
-
         padding-block: 2.2rem * 3;
-        // border-bottom: 2px solid rgb(209, 209, 209);
-        // margin-inline: auto;
     }
 
     .about-me--container {
@@ -229,22 +219,24 @@
 
     .overlap-div {
         position: relative;
-        // left: -5%;
     }
 
     .overlap-div {
         width: 100%;
         max-width: 490px;
         height: fit-content;
+        grid-column: 3 / 4;
         justify-self: end;
         z-index: 2;
 
-        background-image: url('/backgrounds/dark-background.svg');
+        @include background-image(
+            $clr-soft-dark,
+            url('/backgrounds/dark-background.svg')
+        );
         box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
             rgba(0, 0, 0, 0.22) 0px 15px 12px;
         padding: 2em;
         border-radius: 3px;
-        grid-column: 3 / 4;
     }
 
     .who-i-am--col {
@@ -304,24 +296,20 @@
         justify-self: right;
 
         background-color: $clr-soft-light;
-        // box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
-        // rgba(0, 0, 0, 0.22) 0px 15px 12px;
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-            rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-            rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        box-shadow: $box-shadow-strong;
         padding: 1em;
         margin-top: 2.5em;
     }
 
     .just-skills,
     .skills-title {
-        color: $clr-accent2;
         border-color: $clr-accent2;
+
+        color: $clr-accent2;
     }
 
     .all-skills--wrapper {
         width: 100%;
-        // max-width: 330px;
         grid-template-columns: repeat(2, minmax(100px, 1fr));
         grid-template-rows: repeat(2, auto);
         grid-row: 2 / 3;
@@ -330,7 +318,6 @@
 
     .skills-list {
         width: 75%;
-        // max-width: 300px;
         grid-row: initial;
 
         li {
@@ -358,16 +345,6 @@
     }
 }
 
-// @keyframes slideFromLeft {
-//     from {
-//         transform: translateX(-100%);
-//     }
-
-//     to {
-//         transform: translateX(0);
-//     }
-// }
-
 @media (min-width: 1000px) {
     .about-me--section {
         transform: translateX(-60%);
@@ -375,8 +352,6 @@
     }
 
     .show-about {
-        // display: block;
-        // animation: slideFromLeft 5s ease-in 5s forwards;
         transform: translateX(0);
     }
 }

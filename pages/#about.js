@@ -1,38 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-// import { motion, useAnimation } from 'framer-motion'
 
 import styles from '../styles/AboutMe/AboutMe.module.scss'
 import useCurrentSection from '../components/hooks/useCurrentSection'
 
 export default function AboutMe() {
     const aboutRef = useRef()
-    // const containerRef = useRef()
-    // const animation = useAnimation()
     const [aboutVisible, setAboutVisible] = useState(false)
-    // console.log(aboutVisible)
 
     useCurrentSection(aboutRef, '-50%', '/#about')
-
-    // useEffect(() => {
-    //     // console.log(aboutVisible)
-    //     // console.log(seen)
-    //     if (aboutVisible) {
-    //         setSeen(true)
-    //         animation.start({
-    //             x: 0,
-    //             transition: {
-    //                 type: 'easeOut',
-    //                 duration: 1,
-    //             },
-    //         })
-    //         // console.log('show works')
-    //     } else if (!aboutVisible) {
-    //         animation.start({ x: '-100vw' })
-    //         // console.log('hide works')
-    //     }
-    // }, [aboutVisible, seen])
 
     useEffect(() => {
         const aboutEl = document.getElementById('about')
@@ -72,12 +49,8 @@ export default function AboutMe() {
             }`}
             ref={aboutRef}
             id="about"
-            // animate={animation}
         >
-            <div
-                className={styles['border-decoration']}
-                // ref={containerRef}
-            >
+            <div className={styles['border-decoration']}>
                 <div className={styles['about-me--container']}>
                     <div className={styles['overlap-div']}>
                         <aside className={styles['who-i-am--col']}>

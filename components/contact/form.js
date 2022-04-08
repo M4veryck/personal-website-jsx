@@ -1,4 +1,4 @@
-import { ACTIONS } from '../../components/hooks/useContact'
+import { ACTIONS } from '../hooks/useContact'
 import styles from '../../styles/Contact/Contact.module.scss'
 
 import { getInputData } from '../../utils/utils'
@@ -9,14 +9,14 @@ export default function Form({ dispatcher, state, setSendingEmail }) {
             state.styleBadFields &&
             state.badFields.some(field => field === id)
         ) {
-            return styles['empty']
+            return styles['bad-field']
         }
 
         return ''
     }
 
     return (
-        <form className={styles.form}>
+        <form className={styles['form']}>
             <label htmlFor="user_name">
                 Name <span className={styles['required']}>*</span>
             </label>
@@ -31,7 +31,9 @@ export default function Form({ dispatcher, state, setSendingEmail }) {
                     })
                 }}
                 value={state.form.user_name}
-                className={`${styles.userName} ${isBadFieldClass('user_name')}`}
+                className={`${styles['user-name']} ${isBadFieldClass(
+                    'user_name'
+                )}`}
                 required
             />
 
@@ -49,13 +51,13 @@ export default function Form({ dispatcher, state, setSendingEmail }) {
                     })
                 }}
                 value={state.form.user_email}
-                className={`${styles.userEmail} ${isBadFieldClass(
+                className={`${styles['user-email']} ${isBadFieldClass(
                     'user_email'
                 )}`}
                 required
             />
             {!state.validEmail && (
-                <p className={styles.invalidEmailMsg}>! Invalid Email</p>
+                <p className={styles['invalid-email']}>! Invalid Email</p>
             )}
 
             <label htmlFor="message">
@@ -71,7 +73,7 @@ export default function Form({ dispatcher, state, setSendingEmail }) {
                     })
                 }}
                 value={state.form.message}
-                className={`${styles.message} ${isBadFieldClass('message')}`}
+                className={`${styles['message']} ${isBadFieldClass('message')}`}
                 required
             />
 
@@ -87,7 +89,7 @@ export default function Form({ dispatcher, state, setSendingEmail }) {
                         setSendingEmail,
                     })
                 }}
-                className={styles.sendButton}
+                className={styles['send-btn']}
                 id="send-btn"
             >
                 {state.disabledBtn ? 'Processing...' : 'Send'}
