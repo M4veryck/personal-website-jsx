@@ -1,7 +1,6 @@
 import { useRef } from 'react'
-import Image from 'next/image'
 
-import styles from '../../styles/Hero/NewHero.module.scss'
+import styles from '../../styles/Hero/Hero.module.scss'
 import useCurrentSection from '../hooks/useCurrentSection'
 
 export default function Hero() {
@@ -23,7 +22,7 @@ export default function Hero() {
                 <div className={styles['overlap-div']}>
                     <div className={styles['ads-text--container']}>
                         <p className={styles['ads-text']}>Clean design</p>
-                        <p className={styles['ads-text']}>Unique websites</p>
+                        <p className={styles['ads-text']}>Robust websites</p>
                         <p className={styles['ads-text']}>Fast solutions</p>
                     </div>
                 </div>

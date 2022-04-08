@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { createContext, useContext } from 'react'
 
 const NavBarContext = createContext()
@@ -6,10 +6,8 @@ const NavBarContext = createContext()
 function NavBarContextProvider({ children }) {
     const [clickedNavBar, setClickedNavBar] = useState(false)
     const [currentSection, setCurrentSection] = useState('/')
-    // const currentSection = useRef('/')
 
     const manageClicked = () => {
-        console.log('Clicked!')
         setClickedNavBar(true)
         setTimeout(() => setClickedNavBar(false), 1000)
     }
@@ -24,8 +22,6 @@ function NavBarContextProvider({ children }) {
         currentSection,
         manageCurrentSection,
     }
-
-    // current: currentSection.current,
 
     return (
         <NavBarContext.Provider value={values}>

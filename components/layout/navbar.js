@@ -6,13 +6,13 @@ export default function Navbar({ navOn, toggleNav }) {
     const { manageClicked, currentSection } = NavBarContextConsumer()
 
     return (
-        <nav className={`${styles.nav} ${navOn && styles.navOpen}`}>
-            <ul className={styles.navList} onClick={manageClicked}>
+        <nav className={`${styles['nav']} ${navOn && styles['nav-open']}`}>
+            <ul className={styles['nav-list']} onClick={manageClicked}>
                 <li>
                     <Link href="/">
                         <a
-                            className={`${styles.navLink} ${
-                                currentSection === '/' && styles.current
+                            className={`${styles['nav-link']} ${
+                                currentSection === '/' && styles['current']
                             }`}
                             onClick={() => {
                                 manageClicked()
@@ -26,8 +26,9 @@ export default function Navbar({ navOn, toggleNav }) {
                 <li>
                     <Link href="/#about">
                         <a
-                            className={`${styles.navLink} ${
-                                currentSection === '/#about' && styles.current
+                            className={`${styles['nav-link']} ${
+                                currentSection === '/#about' &&
+                                styles['current']
                             }`}
                             onClick={toggleNav}
                         >
@@ -38,9 +39,9 @@ export default function Navbar({ navOn, toggleNav }) {
                 <li>
                     <Link href="/#projects">
                         <a
-                            className={`${styles.navLink} ${
+                            className={`${styles['nav-link']} ${
                                 currentSection === '/#projects' &&
-                                styles.current
+                                styles['current']
                             }`}
                             onClick={toggleNav}
                         >
@@ -51,8 +52,9 @@ export default function Navbar({ navOn, toggleNav }) {
                 <li>
                     <Link href="/contact">
                         <a
-                            className={`${styles.navLink} ${
-                                currentSection === '/contact' && styles.current
+                            className={`${styles['nav-link']} ${
+                                currentSection === '/contact' &&
+                                styles['current']
                             }`}
                             onClick={toggleNav}
                         >

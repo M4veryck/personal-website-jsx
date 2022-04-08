@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useRef } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 
@@ -53,13 +54,13 @@ export default function Projects() {
     return (
         <section className={styles.Projects} id="projects" ref={projectsRef}>
             <h2 className={styles.title}>My Projects</h2>
-            <motion.div
+            <div
                 className={styles.projectContainer}
                 ref={projectsContainerRef}
-                animate={animation}
+                // animate={animation}
             >
                 {Projects}
-            </motion.div>
+            </div>
         </section>
     )
 }

@@ -2,286 +2,196 @@
 
 .hero--section {
     display: grid;
+    justify-items: center;
     width: 100%;
-    height: 90vh;
-    max-height: 800px;
+    height: 610px;
+    position: relative;
+    z-index: 1;
 
-    // background-color: #f3f3f3;
-    // background-image: url('/backgrounds/demo2-hero-background.svg');
-    // background-position: center;
-    // background-repeat: no-repeat;
-    // background-size: cover;
+    @include background-image(
+        $clr-soft-dark,
+        url('/backgrounds/dark-background.svg')
+    );
 }
 
 .hero--container {
     display: grid;
-    z-index: 2;
-    grid-template-rows: 40% 55%;
-    row-gap: 5%;
-    justify-items: center;
-    // grid-template-areas:
-    //     'avatar-imageWrapper'
-    //     'greeting'
-    //     'name-rolWrapper'
-    //     'quoteWrapper';
-    // width: 100%;
+    align-self: flex-start;
     width: 90%;
-    height: 90%;
-    max-height: 800px;
-
-    margin: auto;
-
-    color: $dark-color;
-}
-
-.avatar-image--container {
-    position: relative;
-    width: 242px;
-    // max-width: 100px;
-    // width: 200px;
-
-    margin-inline: auto;
-}
-
-.text--container {
-    display: grid;
-    width: fit-content;
-    min-height: fit-content;
-    max-height: 450px;
-    height: 100%;
-
-    * {
-        width: fit-content;
-    }
-}
-
-.name-animation--container {
-    width: 310px;
-
-    margin-bottom: 0.2em;
-}
-
-.greeting {
-    height: fit-content;
-
-    margin-block: 0;
-
-    font-size: $fs-h1;
-    font-weight: 300;
-    letter-spacing: 1px;
-    line-height: 1;
 }
 
 .name-rol--container {
-    height: fit-content;
+    width: 100%;
+    position: relative;
+    z-index: 2;
 
-    margin-block: 0%;
+    padding-top: 3em;
+    padding-inline: 1.2em;
+    margin-top: 1em;
+
+    color: $clr-soft-light;
 }
 
 .name {
-    width: fit-content;
+    width: 100%;
+    height: fit-content;
 
-    margin: 0;
+    margin-block: 0;
 
-    font-family: 'Arvo', $primary-font, BlinkMacSystemFont, Segoe UI, Roboto,
-        Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-        sans-serif;
-    letter-spacing: 0.1em;
-    // color: $accent-color;
-    color: #005b60;
-    font-weight: 400;
-    font-size: $fs-name;
+    @include font-stack('Montserrat');
+
+    font-size: $fs-h1;
+    font-weight: $bold;
+}
+
+.first-name,
+.last-name {
+    background: rgb(214, 36, 205);
+    background: linear-gradient(
+        270deg,
+        rgba(214, 36, 205, 0.74831931063441) 0%,
+        rgba(25, 139, 175, 0.8967786943879115) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .rol {
-    margin-block: 0;
+    width: fit-content;
+    height: fit-content;
+    position: relative;
 
-    font-size: 1.4rem;
+    margin: 0.5em 0 3em 0.5em;
+
     font-weight: $bold !important;
-    letter-spacing: 2px;
+    font-size: $fs-rol;
+
+    &::after {
+        width: 95%;
+        height: 0;
+        content: '';
+        position: absolute;
+        top: 1.1em;
+        left: 0.5em;
+        opacity: 0.75;
+
+        border: 3px solid $clr-accent;
+    }
+}
+
+.overlap-div {
+    width: 80%;
+    max-width: 360px;
+    position: relative;
+    top: -25%;
+    right: -2%;
+    z-index: 2;
+
+    border-radius: 3px;
+}
+
+.ads-text--container {
+    position: relative;
+    width: 100%;
+
+    @include background-image(
+        $clr-soft-light,
+        url('/backgrounds/demo-hero-background.svg')
+    );
+    padding: 2em 0 2em 1.5em;
+    border-radius: 3px;
+    box-shadow: $box-shadow-strong;
+    margin: 0;
+}
+
+.ads-text {
+    width: fit-content;
+    position: relative;
+
+    padding-left: 1em;
+
+    font-size: $fs-p;
+    font-weight: $bold;
+
+    &:first-of-type {
+        margin-top: 0;
+    }
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
 
     &::before {
+        height: 0.8em;
+        position: absolute;
         content: '';
-        position: relative;
-        z-index: 1;
+        top: -0.1em;
+        left: -0.75em;
 
-        border: 3px solid $third-color;
-        margin-right: 0.5em;
+        border: 3px solid #ff00f2;
+        margin-left: 1em;
     }
 }
 
-.quote--container {
-    align-self: flex-end;
-    max-width: 400px;
-
-    margin: 0;
-
-    font-size: 0.9rem;
-    font-weight: 300;
-}
-
-.quote-phrase {
-    margin-bottom: 0;
-
-    font-style: italic;
-}
-
-.quote-author {
-    white-space: nowrap;
-}
-
-@mixin increaseFontSize($num) {
-    .greeting {
-        font-size: $fs-h1 + $num;
-    }
-
+@mixin increase-fs-hero($add) {
     .name {
-        font-size: $fs-name + $num;
+        font-size: $fs-h1 + $add + 0.3;
     }
 
-    .quote--container {
-        font-size: 0.9rem + $num;
+    .rol {
+        font-size: $fs-rol + $add;
+    }
+
+    .ads-text {
+        font-size: $fs-p + $add;
     }
 }
 
-@media (max-width: 739px) {
+/* ====================
+    Media queries
+   ==================== */
+
+@media (min-width: 460px) {
+    @include increase-fs-hero(0.1);
+}
+
+@media (min-width: 680px) {
+    @include increase-fs-hero(0.2);
+}
+
+@media (min-width: 800px) {
+    @include increase-fs-hero(0.6);
+
     .hero--section {
-        min-height: 800px;
+        height: 700px;
     }
 
     .hero--container {
-        min-height: 550px;
+        padding-left: 10em;
     }
 
-    .text--container {
-        max-height: 350px;
+    .overlap-div {
+        max-width: 460px;
+    }
+
+    .ads-text {
+        font-size: $fs-p + 0.3;
     }
 }
 
-@media (min-width: 740px) {
-    @include increaseFontSize(0.1);
-
-    .hero--container {
-        grid-template-columns: 1fr 242px;
-        grid-template-rows: 100%;
-        align-self: center;
-        align-items: center;
-        height: 50%;
-    }
-
-    .avatar-image--container {
-        grid-column: 2 / 3;
-        height: 242px;
-    }
-
-    .text--container {
-        grid-row: 1 / 2;
-        height: 100%;
-    }
-}
-
-@media (min-width: 820px) {
-    .hero--container {
-        column-gap: 2em;
-    }
-
-    .text--container {
-        justify-self: start;
-
-        margin-left: 3em;
-    }
-
-    .avatar-image--container {
-        justify-self: end;
-    }
-
-    .name-animation--container {
-        width: 100%;
-    }
-}
-
-@media (min-width: 1020px) {
-    .hero--container {
-        grid-template-columns: 70% 26.4%;
-        column-gap: 100% - 70 - 26.4;
-    }
-
-    .avatar-image--container {
-        display: grid;
-        align-items: center;
-        justify-self: end;
-        width: 100%;
-        max-width: 350px;
-        height: fit-content;
-    }
-}
-
-@media (min-width: 1080px) {
-    @include increaseFontSize(0.4);
-
-    .hero--container {
-        height: 60%;
-    }
+@media (min-width: 940px) {
+    @include increase-fs-hero(0.75);
 
     .name-rol--container {
-        align-self: center;
+        max-width: 1100px;
     }
 
-    .quote--container {
-        font-size: 0.9rem + 0.2;
-    }
-}
-
-@media (min-width: 1201px) {
-    .hero--container {
-        animation: 0s ease-out 0s 1 slideFromLeft;
+    .overlap-div {
+        max-width: 460px;
     }
 
-    .name-animation--container {
-        border-right: 0.25em solid transparent;
-        overflow: hidden;
-        width: 0;
-        animation: 2.5s steps(15, end) 0.5s forwards typing,
-            0.8s 5 0.5s backwards blink;
-    }
-
-    .name {
-        white-space: nowrap;
-    }
-}
-
-@media (min-height: 700px) and (min-width: 741px) {
-    .hero--container {
-        height: 50%;
-    }
-}
-
-@keyframes slideFromLeft {
-    0% {
-        // transform: translateX(-100%);
-        // opacity: 0;
-    }
-
-    100% {
-        // transform: translateX(0);
-        // opacity: 1;
-    }
-}
-
-@keyframes typing {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
-}
-
-@keyframes blink {
-    from {
-        border-color: transparent;
-    }
-    to {
-        border-color: $dark-color;
+    .ads-text {
+        font-size: $fs-p + 0.4;
     }
 }

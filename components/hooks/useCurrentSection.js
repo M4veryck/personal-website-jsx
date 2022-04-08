@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from 'react'
 import { NavBarContextConsumer } from '../navBarContext'
 import useIntersection from './useIntersection'
 

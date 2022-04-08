@@ -5,14 +5,14 @@ class MyDocument extends Document {
         return (
             <Html>
                 <Head>
-                    <link
+                    {/* <link
                         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap"
                         rel="stylesheet"
                     />
                     <link
                         href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap"
                         rel="stylesheet"
-                    />
+                    /> */}
                     {/* <link
                         href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
                         rel="stylesheet"
@@ -24,7 +24,7 @@ class MyDocument extends Document {
                     />
 
                     <link
-                        href="https://fonts.googleapis.com/css2?family=Montserrat;wght@300&display=swap"
+                        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
                         rel="stylesheet"
                     />
                 </Head>

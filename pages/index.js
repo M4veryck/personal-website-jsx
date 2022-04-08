@@ -14,7 +14,7 @@ export default function Home() {
         const box = document.getElementById('box')
         const pageContainer = document.getElementById('page--container')
         box.style.height = `${pageContainer.offsetHeight + 120}px`
-        console.log(pageContainer.offsetHeight)
+        // console.log(pageContainer.offsetHeight)
 
         if (typeof window !== 'undefined') {
             window.addEventListener('resize', () => {
@@ -25,7 +25,7 @@ export default function Home() {
         return () => {
             if (typeof window !== 'undefined') {
                 window.removeEventListener('resize', () => {
-                    box.style.height = `${pageContainer.offsetHeight}px`
+                    box.style.height = `${pageContainer.offsetHeight + 120}px`
                 })
             }
         }
@@ -54,7 +54,7 @@ export default function Home() {
                         layout="fill"
                         objectFit="cover"
                         quality={100}
-                        priority
+                        // priority
                     />
                 </div>
             </Layout>

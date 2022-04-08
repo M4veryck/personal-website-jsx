@@ -12,84 +12,79 @@
 
     background: $clr-dark;
     color: $clr-light;
-
-    .navList {
-        display: grid;
-        grid-template-rows: repeat(4, 100px);
-        align-items: center;
-        justify-items: center;
-
-        padding-inline: 0.5em;
-        margin-top: 3em;
-        list-style-type: none;
-    }
-
-    .navLink {
-        margin-block: 3em;
-
-        color: $clr-light;
-        font-size: $fs-navLink;
-        text-decoration: none;
-        letter-spacing: 1px;
-    }
 }
 
-.navOpen {
+.nav-list {
+    display: grid;
+    grid-template-rows: repeat(4, 100px);
+    align-items: center;
+    justify-items: center;
+    list-style-type: none;
+
+    padding-inline: 0.5em;
+    margin-top: 3em;
+}
+
+.nav-link {
+    margin-block: 3em;
+
+    color: $clr-light;
+    font-size: $fs-navLink;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.nav-open {
     transform: translateX(0);
 }
 
+/* ====================
+    Media queries
+   ==================== */
+
 @media (min-width: 900px) {
     .nav {
+        height: 100%;
         display: grid;
         position: relative;
-        height: 100%;
         top: 0px;
         width: 80%;
         transform: none;
         transition: none;
 
-        // margin-right: 1em;
-
-        // margin-left: auto;
-        // margin-right: 0;
-
         background-color: $clr-dark;
-        // padding: 0.8em 1em;
+    }
 
-        .navList {
-            // position: relative;
-            display: flex;
-            justify-content: flex-end;
-            width: 100%;
+    .nav-list {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
 
-            margin-block: auto;
-            // margin-right: 2em;
-            list-style: none;
-            // z-index: 100000;
+        margin-block: auto;
+        list-style: none;
+    }
 
-            .navLink {
-                margin-block: 0;
-                margin-inline: 3em;
+    .nav-link {
+        margin-block: 0;
+        margin-inline: 3em;
 
-                font-weight: $bold;
-                font-size: 1rem;
-                color: $clr-light;
-                text-decoration: none;
-                letter-spacing: 1px;
+        font-weight: $bold;
+        font-size: 1rem;
+        color: $clr-light;
+        text-decoration: none;
+        letter-spacing: 1px;
 
-                &:hover,
-                &:focus-visible {
-                    border-bottom: 2px solid #2aaaff;
-                }
-
-                &:last-of-type {
-                    margin-right: 0;
-                }
-            }
-
-            .current {
-                border-bottom: 2px solid $clr-light;
-            }
+        &:hover,
+        &:focus-visible {
+            border-bottom: 2px solid $clr-accent;
         }
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+
+    .current {
+        border-bottom: 2px solid $clr-light;
     }
 }

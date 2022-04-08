@@ -178,6 +178,10 @@
     }
 }
 
+.empty {
+    border-color: red !important;
+}
+
 @media (min-width: 1201px) {
     // .contactContainer {
     //     animation: slideFromAbove 2s linear;

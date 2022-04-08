@@ -1,48 +1,84 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { motion, useAnimation } from 'framer-motion'
+// import { motion, useAnimation } from 'framer-motion'
 
 import styles from '../styles/AboutMe/AboutMe.module.scss'
 import useCurrentSection from '../components/hooks/useCurrentSection'
-import useIntersection from '../components/hooks/useIntersection'
 
 export default function AboutMe() {
     const aboutRef = useRef()
-    const containerRef = useRef()
-    const animation = useAnimation()
-    const containerVisible = useIntersection(containerRef, '-50%')
-    const [seenCounter, setSeenCounter] = useState(false)
+    // const containerRef = useRef()
+    // const animation = useAnimation()
+    const [aboutVisible, setAboutVisible] = useState(false)
+    // console.log(aboutVisible)
 
     useCurrentSection(aboutRef, '-50%', '/#about')
 
+    // useEffect(() => {
+    //     // console.log(aboutVisible)
+    //     // console.log(seen)
+    //     if (aboutVisible) {
+    //         setSeen(true)
+    //         animation.start({
+    //             x: 0,
+    //             transition: {
+    //                 type: 'easeOut',
+    //                 duration: 1,
+    //             },
+    //         })
+    //         // console.log('show works')
+    //     } else if (!aboutVisible) {
+    //         animation.start({ x: '-100vw' })
+    //         // console.log('hide works')
+    //     }
+    // }, [aboutVisible, seen])
+
     useEffect(() => {
-        console.log(containerVisible)
-        if (containerVisible) {
-            setSeenCounter(true)
-            animation.start({
-                x: 0,
-                transition: {
-                    type: 'spring',
-                    duration: 1,
-                },
+        const aboutEl = document.getElementById('about')
+
+        if (typeof window !== 'undefined') {
+            const distanceToHalfAbout =
+                window.pageYOffset + aboutEl.getBoundingClientRect().top * 1.5
+
+            window.addEventListener('scroll', () => {
+                let amountScrolled = window.pageYOffset + window.innerHeight
+                if (amountScrolled >= distanceToHalfAbout) {
+                    setAboutVisible(true)
+                }
             })
-        } else if (!seenCounter && !containerVisible) {
-            animation.start({ x: '-40vw' })
         }
-    }, [containerVisible])
+
+        return () => {
+            if (typeof window !== 'undefined') {
+                const distanceToHalfAbout =
+                    window.pageYOffset +
+                    aboutEl.getBoundingClientRect().top * 1.5
+
+                window.removeEventListener('scroll', () => {
+                    let amountScrolled = window.pageYOffset + window.innerHeight
+                    if (amountScrolled >= distanceToHalfAbout) {
+                        setAboutVisible(true)
+                    }
+                })
+            }
+        }
+    }, [aboutVisible])
 
     return (
         <section
-            className={styles['about-me--section']}
+            className={`${styles['about-me--section']} ${
+                aboutVisible && styles['show-about']
+            }`}
             ref={aboutRef}
             id="about"
+            // animate={animation}
         >
-            <div className={styles['border-decoration']}>
-                <motion.div
-                    className={styles['about-me--container']}
-                    ref={containerRef}
-                    // animate={animation}
-                >
+            <div
+                className={styles['border-decoration']}
+                // ref={containerRef}
+            >
+                <div className={styles['about-me--container']}>
                     <div className={styles['overlap-div']}>
                         <aside className={styles['who-i-am--col']}>
                             <h2 className={styles['title']}>Who I am</h2>
@@ -77,7 +113,7 @@ export default function AboutMe() {
                         </aside>
                     </div>
 
-                    <div className={styles['skills--col']}>
+                    <aside className={styles['skills--col']}>
                         <h3 className={styles['just-skills']}>Skills</h3>
 
                         <div className={styles['all-skills--wrapper']}>
@@ -122,8 +158,8 @@ export default function AboutMe() {
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                </motion.div>
+                    </aside>
+                </div>
             </div>
         </section>
     )

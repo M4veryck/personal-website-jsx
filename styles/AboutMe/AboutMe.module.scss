@@ -358,6 +358,29 @@
     }
 }
 
+// @keyframes slideFromLeft {
+//     from {
+//         transform: translateX(-100%);
+//     }
+
+//     to {
+//         transform: translateX(0);
+//     }
+// }
+
+@media (min-width: 1000px) {
+    .about-me--section {
+        transform: translateX(-60%);
+        transition: transform 1s 0.2s cubic-bezier(0.5, 0, 0.5, 1);
+    }
+
+    .show-about {
+        // display: block;
+        // animation: slideFromLeft 5s ease-in 5s forwards;
+        transform: translateX(0);
+    }
+}
+
 @media (min-width: 1080px) {
     .just-skills {
         font-size: $fs-h3 + 0.2;
