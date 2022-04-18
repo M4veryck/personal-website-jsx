@@ -54,7 +54,7 @@ export default function AboutMe() {
                 <div className={styles['about-me--container']}>
                     <div className={styles['overlap-div']}>
                         <aside className={styles['who-i-am--col']}>
-                            <h2 className={styles['title']}>Who I am</h2>
+                            <h2 className={styles['about--title']}>Who I am</h2>
 
                             <div className={styles['descriptions--wrapper']}>
                                 <p className={styles['description']}>

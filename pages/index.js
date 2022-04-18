@@ -10,27 +10,27 @@ import styles from '../styles/Home.module.scss'
 import { useEffect } from 'react'
 
 export default function Home() {
-    useEffect(() => {
-        const box = document.getElementById('box')
-        const pageContainer = document.getElementById('page--container')
-        box.style.height = `${pageContainer.offsetHeight + 120}px`
+    // useEffect(() => {
+    //     const box = document.getElementById('box')
+    //     const pageContainer = document.getElementById('page--container')
+    //     box.style.height = `${pageContainer.offsetHeight + 120}px`
 
-        if (typeof window !== 'undefined') {
-            window.addEventListener('resize', () => {
-                box.style.height = `${pageContainer.offsetHeight + 120}px`
-            })
-        }
+    //     if (typeof window !== 'undefined') {
+    //         window.addEventListener('resize', () => {
+    //             box.style.height = `${pageContainer.offsetHeight + 120}px`
+    //         })
+    //     }
 
-        return () => {
-            box.style.height = `${pageContainer.offsetHeight + 120}px`
+    //     return () => {
+    //         box.style.height = `${pageContainer.offsetHeight + 120}px`
 
-            if (typeof window !== 'undefined') {
-                window.removeEventListener('resize', () => {
-                    box.style.height = `${pageContainer.offsetHeight + 120}px`
-                })
-            }
-        }
-    }, [])
+    //         if (typeof window !== 'undefined') {
+    //             window.removeEventListener('resize', () => {
+    //                 box.style.height = `${pageContainer.offsetHeight + 120}px`
+    //             })
+    //         }
+    //     }
+    // }, [])
 
     return (
         <>
@@ -44,12 +44,12 @@ export default function Home() {
             </Head>
 
             <Layout>
-                <div className={styles['page--container']} id="page--container">
-                    <Hero />
-                    <AboutMe />
-                    <Projects />
-                </div>
-                <div className={styles['box']} id="box">
+                {/* <div className={styles['page--container']} id="page--container"> */}
+                <Hero />
+                <AboutMe />
+                <Projects />
+                {/* </div> */}
+                {/* <div className={styles['box']} id="box">
                     <Image
                         src="/backgrounds/main-light-background.svg"
                         alt="background decoration"
@@ -57,7 +57,7 @@ export default function Home() {
                         objectFit="cover"
                         quality={100}
                     />
-                </div>
+                </div> */}
             </Layout>
         </>
     )

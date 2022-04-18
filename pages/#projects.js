@@ -52,10 +52,14 @@ export default function Projects() {
     )
 
     return (
-        <section className={styles.Projects} id="projects" ref={projectsRef}>
-            <h2 className={styles.title}>My Projects</h2>
+        <section
+            className={styles['projects--section']}
+            id="projects"
+            ref={projectsRef}
+        >
+            <h2 className={styles['section--title']}>My Projects</h2>
             <div
-                className={styles.projectContainer}
+                className={styles['projects--container']}
                 ref={projectsContainerRef}
                 // animate={animation}
             >

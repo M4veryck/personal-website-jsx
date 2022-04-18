@@ -45,7 +45,7 @@
     justify-content: center;
 }
 
-.title {
+.about--title {
     @include h2-styles($clr-accent2);
 
     margin-bottom: 2em;
@@ -89,6 +89,7 @@
 
 .just-skills {
     @include h3-styles($clr-accent2);
+    @include font-stack('Raleway');
 
     margin-top: 0;
     margin-bottom: 2em;
@@ -122,7 +123,6 @@
 
     padding-left: 0;
     margin-inline: auto;
-
     li {
         width: 100%;
 
@@ -179,7 +179,7 @@
 }
 
 @media (min-width: 820px) {
-    .title {
+    .about--title {
         font-size: $fs-h2 + 0.1;
     }
 
@@ -213,7 +213,7 @@
     .about-me--container {
         grid-template-columns: 10% 40% 50%;
         width: 100%;
-        max-width: 980px;
+        // max-width: 980px;
         margin-block: 0;
     }
 
@@ -223,7 +223,7 @@
 
     .overlap-div {
         width: 100%;
-        max-width: 490px;
+        // max-width: 490px;
         height: fit-content;
         grid-column: 3 / 4;
         justify-self: end;
@@ -252,7 +252,7 @@
         }
     }
 
-    .title {
+    .about--title {
         border-color: $clr-accent;
 
         color: $clr-accent;
@@ -264,7 +264,7 @@
 
     .description {
         width: 70%;
-        max-width: 520px;
+        // max-width: 520px;
 
         margin-block: 1.5em;
 
@@ -288,7 +288,7 @@
 
     .skills--col {
         width: 100%;
-        max-width: 392px;
+        // max-width: 392px;
         height: fit-content;
         grid-row: 1 / 2;
         grid-column: 2 / 3;
@@ -368,6 +368,31 @@
     .skills-list {
         li {
             font-size: 1.1rem;
+        }
+    }
+}
+
+@media (min-width: 1160px) {
+    .about--title {
+        font-size: $fs-h2 + 0.4;
+    }
+
+    .description {
+        font-size: $fs-p + 0.2;
+    }
+
+    .just-skills {
+        font-size: $fs-h3 + 0.6;
+    }
+
+    .skills-title {
+        font-size: $fs-h4 + 0.4;
+    }
+
+    .skills-list {
+        max-width: 220px;
+        li {
+            font-size: 1.3rem;
         }
     }
 }

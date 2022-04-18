@@ -1,8 +1,8 @@
 const projectsData = [
     {
         id: '1',
-        imgSrc: '/projects/unit-converter.png',
-        imgAlt: 'Unit converter app',
+        imgSrc: '/projects/mockify-imac.png',
+        imgAlt: 'Mockify',
         projectTitle: 'Unit Converter',
         projectDesc:
             'Converts every number the user inputs into meters, feet, kilos, and more. Invalid characters validation included.',

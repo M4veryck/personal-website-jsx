@@ -4,7 +4,7 @@
     display: grid;
     justify-items: center;
     width: 100%;
-    height: 610px;
+    // height: 610px;
     position: relative;
     z-index: 1;
 
@@ -17,45 +17,69 @@
 .hero--container {
     display: grid;
     align-self: flex-start;
+    justify-items: center;
     width: 90%;
+
+    margin: 3em 1em 5em;
 }
 
-.name-rol--container {
+// .all-imgs--container {
+//     background-color: rgb(34, 34, 34);
+//     padding: 2em 1.5em;
+//     border-radius: 5px;
+// }
+
+.mockify--container {
+    width: 100%;
+    // height: 200px;
+    max-width: 400px;
+    position: relative;
+
+    * {
+        width: 100%;
+    }
+}
+
+.text--container {
     width: 100%;
     position: relative;
     z-index: 2;
 
-    padding-top: 3em;
-    padding-inline: 1.2em;
+    background-color: #fff;
+    padding: 2em;
+    padding-right: 0;
+    // padding: 2em 1.2em;
     margin-top: 1em;
 
-    color: $clr-soft-light;
+    color: $clr-dark;
 }
 
 .name {
+    @include font-stack('Raleway');
     width: 100%;
     height: fit-content;
 
     margin-block: 0;
 
-    @include font-stack('Montserrat');
-
     font-size: $fs-h1;
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    // color: $clr-dark;
 }
 
-.first-name,
-.last-name {
-    background: rgb(214, 36, 205);
-    background: linear-gradient(
-        270deg,
-        rgba(214, 36, 205, 0.74831931063441) 0%,
-        rgba(25, 139, 175, 0.8967786943879115) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+// .first-name,
+// .last-name {
+//     background: #d624cd;
+//     background: linear-gradient(
+//         270deg,
+//         rgba(214, 36, 205, 0.74831931063441) 0%,
+//         rgba(25, 139, 175, 0.8967786943879115) 100%
+//     );
+//     -webkit-background-clip: text;
+//     background-clip: text;
+//     -webkit-text-fill-color: transparent;
+// }
 
 .rol {
     width: fit-content;
@@ -85,7 +109,7 @@
     max-width: 360px;
     position: relative;
     top: -25%;
-    right: -2%;
+    // right: -2%;
     z-index: 2;
 
     border-radius: 3px;
@@ -152,46 +176,77 @@
     Media queries
    ==================== */
 
-@media (min-width: 460px) {
+@media (min-width: 430px) {
     @include increase-fs-hero(0.1);
-}
 
-@media (min-width: 680px) {
-    @include increase-fs-hero(0.2);
+    .text--container {
+        max-width: 400px;
+    }
 }
 
 @media (min-width: 800px) {
-    @include increase-fs-hero(0.6);
-
-    .hero--section {
-        height: 700px;
-    }
-
     .hero--container {
-        padding-left: 10em;
+        grid-template-columns: 55% 5% 40%;
+        // grid-template-rows: auto;
+        align-items: center;
     }
 
-    .overlap-div {
-        max-width: 460px;
+    .mockify--container,
+    .text--container {
+        grid-row: 1 / 3;
     }
 
-    .ads-text {
-        font-size: $fs-p + 0.3;
+    .mockify--container {
+        width: 100%;
+        // max-width: 460px;
+        grid-column: 3 / 4;
+    }
+}
+
+@media (min-width: 920px) {
+    @include increase-fs-hero(0.3);
+
+    .text--container {
+        max-width: 420px;
     }
 }
 
-@media (min-width: 940px) {
-    @include increase-fs-hero(0.75);
+// @media (min-width: 680px) {
+//     @include increase-fs-hero(0.2);
+// }
 
-    .name-rol--container {
-        max-width: 1100px;
-    }
+// @media (min-width: 800px) {
+//     @include increase-fs-hero(0.6);
 
-    .overlap-div {
-        max-width: 460px;
-    }
+//     .hero--section {
+//         height: 700px;
+//     }
 
-    .ads-text {
-        font-size: $fs-p + 0.4;
-    }
-}
+//     .hero--container {
+//         padding-left: 10em;
+//     }
+
+//     .overlap-div {
+//         max-width: 460px;
+//     }
+
+//     .ads-text {
+//         font-size: $fs-p + 0.3;
+//     }
+// }
+
+// @media (min-width: 940px) {
+//     @include increase-fs-hero(0.75);
+
+//     .name-rol--container {
+//         max-width: 1100px;
+//     }
+
+//     .overlap-div {
+//         max-width: 460px;
+//     }
+
+//     .ads-text {
+//         font-size: $fs-p + 0.4;
+//     }
+// }
