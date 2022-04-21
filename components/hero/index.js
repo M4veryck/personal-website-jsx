@@ -12,14 +12,14 @@ export default function Hero() {
         <section className={styles['hero--section']} id="main" ref={heroRef}>
             <div className={styles['hero--container']}>
                 {/* <div className={styles['all-imgs--container']}> */}
-                <div className={styles['mockify--container']}>
+                <div className={styles['image--container']}>
                     <Image
-                        src="/hero/mockify-contained.svg"
+                        src="/hero/website-cover.svg"
                         alt=""
-                        // layout="fill"
+                        // layout="responsive"
                         // objectFit="cover"
-                        width={560}
-                        height={410}
+                        width={520}
+                        height={741}
                     />
                 </div>
                 {/* </div> */}
@@ -29,7 +29,7 @@ export default function Hero() {
                         <br />
                         <span className={styles['last-name']}>Maya</span>
                     </h1>
-                    <p className={styles['rol']}>Fullstack developer</p>
+                    <p className={styles['rol']}>Frontend developer</p>
                     <p className={styles['ads-text']}>Clean design</p>
                     <p className={styles['ads-text']}>Robust websites</p>
                     <p className={styles['ads-text']}>Fast solutions</p>

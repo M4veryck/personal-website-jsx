@@ -38,14 +38,34 @@ export default function Projects() {
     useCurrentSection(projectsRef, '-50%', '/#projects')
 
     const Projects = projectsData.map(
-        ({ id, imgSrc, imgAlt, projectTitle, projectDesc }) => {
+        ({
+            id,
+            imgSrc,
+            imgAlt,
+            websiteLink,
+            githubLink,
+            projectTitle,
+            projectDesc,
+            projectLongDesc,
+            bugs,
+            techStack,
+            difficulties,
+            futureFeatures,
+        }) => {
             return (
                 <Project
                     key={id}
                     imgSrc={imgSrc}
                     imgAlt={imgAlt}
+                    websiteLink={websiteLink}
+                    githubLink={githubLink}
                     projectTitle={projectTitle}
                     projectDesc={projectDesc}
+                    projectLongDesc={projectLongDesc}
+                    bugs={bugs}
+                    techStack={techStack}
+                    difficulties={difficulties}
+                    futureFeatures={futureFeatures}
                 />
             )
         }

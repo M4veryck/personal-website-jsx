@@ -50,6 +50,7 @@ export default function Footer() {
         <footer className={styles.footer}>
             <div className={styles.footerContainer}>
                 <div className={styles.col1} id="iJustWantToFormatThis">
+                    <h4 className={styles.personalLinksTitle}>Contact Info:</h4>
                     {PersonalLinks}
                 </div>
                 <div className={styles.col2}>

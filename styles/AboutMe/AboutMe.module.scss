@@ -1,6 +1,10 @@
 @import '../vars.scss';
 
 .about-me--section {
+    @include background-image(
+        $clr-soft-light,
+        url('/backgrounds/main-light-background.svg')
+    );
     display: grid;
     width: 100%;
     position: relative;
@@ -25,7 +29,8 @@
 .about-me--container {
     z-index: 2;
     display: grid;
-    width: 100%;
+    // width: 100%;
+    width: 90%;
 
     margin-block: 3em;
     margin-inline: auto;
@@ -201,19 +206,15 @@
 }
 
 @media (min-width: 880px) {
-    .about-me--section {
-        background-color: unset;
-        background-image: unset;
-    }
-
     .border-decoration {
         padding-block: 2.2rem * 3;
     }
 
     .about-me--container {
         grid-template-columns: 10% 40% 50%;
-        width: 100%;
+        // width: 100%;
         // max-width: 980px;
+        padding-block: 2.2rem * 3;
         margin-block: 0;
     }
 
@@ -235,7 +236,7 @@
         );
         box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
             rgba(0, 0, 0, 0.22) 0px 15px 12px;
-        padding: 2em;
+        padding: 4em 2em;
         border-radius: 3px;
     }
 
@@ -297,7 +298,7 @@
 
         background-color: $clr-soft-light;
         box-shadow: $box-shadow-strong;
-        padding: 1em;
+        padding: 2em 1em;
         margin-top: 2.5em;
     }
 
@@ -345,16 +346,16 @@
     }
 }
 
-@media (min-width: 1000px) {
-    .about-me--section {
-        transform: translateX(-60%);
-        transition: transform 1s 0.2s cubic-bezier(0.5, 0, 0.5, 1);
-    }
+// @media (min-width: 1000px) {
+//     .about-me--section {
+//         transform: translateX(-60%);
+//         transition: transform 1s 0.2s cubic-bezier(0.5, 0, 0.5, 1);
+//     }
 
-    .show-about {
-        transform: translateX(0);
-    }
-}
+//     .show-about {
+//         transform: translateX(0);
+//     }
+// }
 
 @media (min-width: 1080px) {
     .just-skills {
