@@ -35,10 +35,9 @@ export default function Hero() {
                     <Image
                         src="/hero/website-cover.svg"
                         alt=""
-                        // layout="responsive"
-                        // objectFit="cover"
                         width={520}
                         height={741}
+                        priority
                     />
                 </div>
                 <div className={styles['text--container']}>

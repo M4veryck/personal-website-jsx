@@ -17,6 +17,9 @@ export default function Navbar({ navOn, toggleNav }) {
                             onClick={() => {
                                 manageClicked()
                                 toggleNav()
+                                // document.body.style.overflowY = 'initial'
+                                // document.documentElement.style.overflowY =
+                                //     'initial'
                             }}
                         >
                             Home
@@ -30,7 +33,12 @@ export default function Navbar({ navOn, toggleNav }) {
                                 currentSection === '/#about' &&
                                 styles['current']
                             }`}
-                            onClick={toggleNav}
+                            onClick={e => {
+                                toggleNav()
+                                // document.body.style.overflowY = 'initial'
+                                // document.documentElement.style.overflowY =
+                                //     'initial'
+                            }}
                         >
                             About
                         </a>
@@ -43,7 +51,12 @@ export default function Navbar({ navOn, toggleNav }) {
                                 currentSection === '/#projects' &&
                                 styles['current']
                             }`}
-                            onClick={toggleNav}
+                            onClick={e => {
+                                toggleNav()
+                                // document.body.style.overflowY = 'initial'
+                                // document.documentElement.style.overflowY =
+                                //     'initial'
+                            }}
                         >
                             Projects
                         </a>
@@ -56,7 +69,12 @@ export default function Navbar({ navOn, toggleNav }) {
                                 currentSection === '/contact' &&
                                 styles['current']
                             }`}
-                            onClick={toggleNav}
+                            onClick={e => {
+                                toggleNav()
+                                // document.body.style.overflowY = 'initial'
+                                // document.documentElement.style.overflowY =
+                                //     'initial'
+                            }}
                         >
                             Contact me
                         </a>

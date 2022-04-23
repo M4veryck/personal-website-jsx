@@ -17,11 +17,29 @@ export default function Header() {
 
     useEffect(() => {
         if (navOn) {
-            document.body.style.overflow = 'hidden'
+            document.body.style.overflowY = 'hidden'
+            document.documentElement.style.overflowY = 'hidden'
             return
         }
-        document.body.style.overflow = 'initial'
+        // document.body.style.overflow = 'initial'
+        // document.documentElement.style.overflow = 'initial'
     }, [navOn])
+
+    useEffect(() => {
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 900) {
+                setNavOn(false)
+            }
+        })
+
+        return () => {
+            window.removeEventListener('resize', () => {
+                if (window.innerWidth >= 900) {
+                    setNavOn(false)
+                }
+            })
+        }
+    }, [])
 
     return (
         <header className={styles['header']} id="header">
