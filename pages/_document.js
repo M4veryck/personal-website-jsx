@@ -8,11 +8,11 @@ class MyDocument extends Document {
                     {/* <link
                         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap"
                         rel="stylesheet"
-                    />
-                    <link
-                        href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap"
-                        rel="stylesheet"
                     /> */}
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400;600&display=swap"
+                        rel="stylesheet"
+                    />
                     <link
                         href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap"
                         rel="stylesheet"

@@ -1,10 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef, useState, useEffect } from 'react'
+import { motion, useAnimation } from 'framer-motion'
 
 import styles from '../../styles/Projects/Projects.module.scss'
+import useIntersection from '../hooks/useIntersection'
 
 export default function Project({
+    id,
     imgSrc,
     imgAlt,
     websiteLink,
@@ -18,18 +22,18 @@ export default function Project({
     futureFeatures,
 }) {
     const modalRef = useRef()
-    const backgroundModalRef = useRef()
+    // const projectRef = useRef()
     const [displayModal, setDisplayModal] = useState(false)
+    // const projectVisible = useIntersection(projectRef, '-300px')
+    // const animation = useAnimation()
 
     function stylesModalDisplayed() {
-        // backgroundModalRef.current.style.display = 'block'
         modalRef.current.style.display = 'block'
         document.body.style.overflow = 'hidden'
         document.getElementById('projects').style.zIndex = 9
     }
 
     function stylesModalHidden() {
-        // backgroundModalRef.current.style.display = 'none'
         modalRef.current.style.display = 'none'
         document.body.style.overflow = 'auto'
         document.getElementById('projects').style.zIndex = 2
@@ -43,6 +47,37 @@ export default function Project({
         stylesModalHidden()
     }, [displayModal])
 
+    // useEffect(() => {
+    //     if (projectVisible) {
+    //         animation.start({
+    //             x: 0,
+    //             transition: {
+    //                 type: 'spring',
+    //                 duration: 2,
+    //             },
+    //         })
+    //         return
+    //     }
+
+    //     if (Number(id) % 2 === 0) {
+    //         animation.start({
+    //             x: '10%',
+    //             transition: {
+    //                 type: 'spring',
+    //                 duration: 2,
+    //             },
+    //         })
+    //     } else {
+    //         animation.start({
+    //             x: '-10%',
+    //             transition: {
+    //                 type: 'spring',
+    //                 duration: 2,
+    //             },
+    //         })
+    //     }
+    // }, [projectVisible])
+
     return (
         <>
             <div className={styles['modal--container']} ref={modalRef}>
@@ -54,7 +89,6 @@ export default function Project({
                 ></div>
                 <div
                     className={`${styles['project--article']} ${styles['project--modal']}`}
-                    // ref={modalRef}
                 >
                     <div
                         className={`${styles['image--container']} ${styles['image--container--modal']}`}
@@ -62,10 +96,8 @@ export default function Project({
                         <Image
                             src={imgSrc}
                             alt={imgAlt}
-                            // layout="responsive"
                             width={330}
                             height={278}
-                            // objectFit="cover"
                             className={styles['project-image']}
                         />
                     </div>
@@ -73,8 +105,6 @@ export default function Project({
                         className={styles['close-btn']}
                         onClick={e => {
                             setDisplayModal(false)
-                            // document.body.removeEventListener('click', () => {
-                            // })
                         }}
                     >
                         <Image
@@ -106,7 +136,6 @@ export default function Project({
                                         alt="github-icon"
                                         width={20}
                                         height={20}
-                                        // className={styles['github-link-icon']}
                                     />
                                 </div>
                                 <span className={styles['github-link-text']}>
@@ -161,15 +190,17 @@ export default function Project({
                 </div>
             </div>
 
-            <article className={styles['project--article']}>
+            <motion.article
+                className={styles['project--article']}
+                // ref={projectRef}
+                // animate={animation}
+            >
                 <div className={styles['image--container']}>
                     <Image
                         src={imgSrc}
                         alt={imgAlt}
-                        // layout="responsive"
                         width={330}
                         height={278}
-                        // objectFit="cover"
                         className={styles['project-image']}
                     />
                 </div>
@@ -181,23 +212,17 @@ export default function Project({
                     </p>
 
                     <div className={styles['links--container']}>
-                        {/* <Link href="https://google.com"> */}
                         <button
-                            // target="_blank"
                             className={styles['project-link']}
                             onClick={e => {
                                 setDisplayModal(true)
-                                // document.body.addEventListener('click', () => {
-                                //     stylesModalHidden()
-                                // })
                             }}
                         >
                             Open Preview
                         </button>
-                        {/* </Link> */}
                     </div>
                 </div>
-            </article>
+            </motion.article>
         </>
     )
 }

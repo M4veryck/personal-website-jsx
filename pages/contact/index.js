@@ -65,8 +65,8 @@ export default function Contact() {
                                     />
                                 </div>
                                 <p className={styles['succes-message']}>
-                                    Email sent succesfully! <br /> I{`'`}ll be
-                                    in contact with you as soon as possible
+                                    Email sent succesfully! <br /> I{`'`}ll get
+                                    in contact with you as soon as possible.
                                 </p>
                             </div>
                             <div className={styles['go-home--container']}>
@@ -83,7 +83,7 @@ export default function Contact() {
                             <p className={styles['description']}>
                                 If you are interested in{' '}
                                 <strong>hiring me</strong>, providing feedback,
-                                or any other inquiries, please fill up the form.
+                                or any other inquiries, please fill in the form.
                             </p>
                             <Form
                                 dispatcher={dispatcher}

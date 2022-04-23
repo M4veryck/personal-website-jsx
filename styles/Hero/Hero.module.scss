@@ -67,19 +67,6 @@
     // color: $clr-dark;
 }
 
-// .first-name,
-// .last-name {
-//     background: #d624cd;
-//     background: linear-gradient(
-//         270deg,
-//         rgba(214, 36, 205, 0.74831931063441) 0%,
-//         rgba(25, 139, 175, 0.8967786943879115) 100%
-//     );
-//     -webkit-background-clip: text;
-//     background-clip: text;
-//     -webkit-text-fill-color: transparent;
-// }
-
 .rol {
     width: fit-content;
     height: fit-content;
@@ -116,19 +103,10 @@
 
 .ads-text--container {
     position: relative;
-    width: 100%;
-
-    @include background-image(
-        $clr-soft-light,
-        url('/backgrounds/alt-light-background.svg')
-    );
-    padding: 2em 0 2em 1.5em;
-    border-radius: 3px;
-    box-shadow: $box-shadow-strong;
-    margin: 0;
+    // background-color: #ddd;
 }
 
-.ads-text {
+.ads-text--border {
     width: fit-content;
     position: relative;
 
@@ -149,7 +127,8 @@
         height: 0.8em;
         position: absolute;
         content: '';
-        top: -0.1em;
+        top: 50%;
+        transform: translateY(-50%);
         left: -0.75em;
 
         border: 3px solid #ff00f2;
@@ -210,42 +189,154 @@
     }
 }
 
-// @media (min-width: 680px) {
-//     @include increase-fs-hero(0.2);
-// }
+@media (min-width: 1000px) {
+    $typingSpeed: 1s;
+    $initialDelay: 0.75s;
 
-// @media (min-width: 800px) {
-//     @include increase-fs-hero(0.6);
+    .image--container {
+        transform: translateY(100%);
+        animation: fadeInUp 2s ease $initialDelay forwards;
+    }
 
-//     .hero--section {
-//         height: 700px;
-//     }
+    .ads-text {
+        font-family: 'Source Code Pro';
+    }
 
-//     .hero--container {
-//         padding-left: 10em;
-//     }
+    .ads-text_1 {
+        position: relative;
+        width: max-content;
 
-//     .overlap-div {
-//         max-width: 460px;
-//     }
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
 
-//     .ads-text {
-//         font-size: $fs-p + 0.3;
-//     }
-// }
+        &::before {
+            background-color: #fff;
 
-// @media (min-width: 940px) {
-//     @include increase-fs-hero(0.75);
+            animation: typewrite $typingSpeed steps(var(--adsText1Length))
+                $initialDelay forwards;
+        }
 
-//     .name-rol--container {
-//         max-width: 1100px;
-//     }
+        &::after {
+            width: 0.7em;
+            height: 1em;
+            top: 50%;
+            transform: translateY(-50%);
 
-//     .overlap-div {
-//         max-width: 460px;
-//     }
+            background: $clr-accent;
+            animation: typewrite $typingSpeed steps(var(--adsText1Length))
+                    $initialDelay forwards,
+                hideAfter 1ms ($initialDelay + $typingSpeed) forwards;
+        }
+    }
 
-//     .ads-text {
-//         font-size: $fs-p + 0.4;
-//     }
-// }
+    .ads-text_2 {
+        position: relative;
+        width: max-content;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        &::before {
+            background-color: #fff;
+
+            animation: typewrite $typingSpeed steps(var(--adsText2Length))
+                ($initialDelay + $typingSpeed) forwards;
+        }
+
+        &::after {
+            opacity: 0;
+            width: 0.7em;
+            height: 1em;
+            top: 50%;
+            transform: translateY(-50%);
+
+            background: $clr-accent;
+            animation: showAfter 1ms ($initialDelay + $typingSpeed) forwards,
+                typewrite $typingSpeed steps(var(--adsText1Length))
+                    ($initialDelay + $typingSpeed) forwards,
+                hideAfter 1ms ($initialDelay + 2 * $typingSpeed) forwards;
+        }
+    }
+
+    .ads-text_3 {
+        position: relative;
+        width: max-content;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        &::before {
+            background-color: #fff;
+
+            animation: typewrite $typingSpeed steps(var(--adsText3Length))
+                ($initialDelay + 2 * $typingSpeed) forwards;
+        }
+
+        &::after {
+            opacity: 0;
+            width: 0.7em;
+            height: 1em;
+            top: 50%;
+            transform: translateY(-50%);
+
+            background: $clr-accent;
+            animation: showAfter 1ms ($initialDelay + 2 * $typingSpeed) forwards,
+                typewrite $typingSpeed steps(var(--adsText1Length))
+                    ($initialDelay + 2 * $typingSpeed) forwards,
+                blink 1.1s steps(2, start) ($initialDelay + 3 * $typingSpeed)
+                    infinite;
+        }
+    }
+}
+
+@keyframes typewrite {
+    to {
+        left: 101%;
+    }
+}
+
+@keyframes showAfter {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes hideAfter {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

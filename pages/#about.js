@@ -57,8 +57,8 @@ export default function AboutMe() {
                         <div className={styles['descriptions--wrapper']}>
                             <p className={styles['description']}>
                                 I{`'`}m <strong>Maveryck Maya</strong>, a
-                                20-year-old Colombian frontend dev who{`'`}s in
-                                its path towards becoming a senior fullstack
+                                20-year-old Colombian frontend dev who{`'`}s on
+                                his path toward becoming a senior full-stack
                                 engineer.
                             </p>
                             <p className={styles['description']}>
@@ -66,15 +66,15 @@ export default function AboutMe() {
                                 <strong>
                                     quick and creative problem solving
                                 </strong>{' '}
-                                have become second nature.
+                                has become second nature.
                             </p>
                             <p className={styles['description']}>
                                 At{' '}
                                 <Link href="https://scrimba.com">
                                     <a target="_blank">Scrimba</a>
                                 </Link>
-                                , I learned the fundamentals about{' '}
-                                <strong>Responsive Design, UI and UX</strong>,
+                                , I learned the fundamentals of{' '}
+                                <strong>Responsive Design, UI, and UX</strong>,
                                 which allows me to develop quality content.
                             </p>
                         </div>

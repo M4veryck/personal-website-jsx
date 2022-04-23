@@ -7,16 +7,16 @@ const projectsData = [
         githubLink: 'https://github.com/M4veryck/mockify',
         projectTitle: 'Mockify',
         projectDesc:
-            'Mockify (the low budget spotify) allows you to Create, Read, Update and Delete playlists.',
+            'Mockify (the low budget Spotify) allows you to Create, Read, Update and Delete playlists.',
         projectLongDesc:
-            'Mockify is a website inspired in music apps like Spotify and Tidal. It has an authentication system as well and uses MongoDB as a database for both User and Playlist Schemas.',
-        bugs: `I haven't been able to find when the bug happens, but sometimes after logging in, even if the request is successful the page will show Error 500. If this is the case, please refresh and everything should work just fine.`,
+            'Mockify is a website inspired by music apps like Spotify and Tidal. It has an authentication system and uses MongoDB as a database for both User and Playlist Schemas.',
+        bugs: `I haven't been able to find when the bug happens, but sometimes after logging in, even if the request is successful, the page will show Error 500. If this is the case, please refresh and everything should work just fine.`,
         techStack:
             'HTML, CSS, Sass, CSSModules, JavaScript, React, Next.js, MongoDB',
         difficulties:
-            'Managing authentication and state between log in, registration, playlists and playlists/[id] was a big challenge. Mostly, because of React rules for re-rendering a component (there were cases where only refreshing would update the data). Surprisingly, coding the api folder (all backend related) was pretty straightforward.',
+            'Managing authentication and state between login, registration, playlists, and playlists/[id] was a big challenge. For the most part, it was because of React rules for re-rendering a component (there were cases where only refreshing would update the data). Surprisingly, coding the /api folder (all backend related) was pretty straightforward.',
         futureFeatures:
-            'Soon, users will be able to search songs and add them to their playlists, this will be done using Spotify API.',
+            'Soon, users will be able to search for songs and add them to their playlists. I will implement this feature using Spotify API.',
     },
     {
         id: '2',
@@ -31,9 +31,9 @@ const projectsData = [
             'A replica of the Airbnb Home page. Currently only supports viewport widths of 743px or less.',
         bugs: ``,
         techStack: 'HTML, CSS, Sass, CSSModules, JavaScript, React, Next.js',
-        difficulties: `Doing DevTools in Airbnb's website is a headache. My theory is that they encript their code so that no one can copy and paste their elements, because not even the element's classes names make sense.\n\n Besides that, due to Circular font not being a free font in production, I used one that resembled the most: Montserrat. This led to tiny differences between my project and their website.`,
+        difficulties: `Doing DevTools in Airbnb's website is a headache. My theory is that they encript their code so that no one can copy and paste their elements. Besides that, due to Circular font not being a free font in production, I used one that resembled the most: Montserrat. This font change led to tiny differences between my project and their website.`,
         futureFeatures:
-            'Upcoming desktop view, carousel and dynamic header when scrolling.',
+            'Soon, desktop view, carousel, and dynamic header when scrolling will be available.',
     },
 
     // {
