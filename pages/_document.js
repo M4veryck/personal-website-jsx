@@ -13,6 +13,8 @@ class MyDocument extends Document {
                         href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap"
                         rel="stylesheet"
                     />
+                    <link rel="manifest" href="/manifest.json" />
+                    <meta name="theme-color" content="#1CB4E2" />
                 </Head>
                 <body>
                     <Main />

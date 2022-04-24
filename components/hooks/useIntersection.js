@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // Thanks to https://www.webtips.dev/webtips/react-hooks/element-in-viewport
 
 import { useState, useEffect } from 'react'

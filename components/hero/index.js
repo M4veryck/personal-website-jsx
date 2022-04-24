@@ -28,7 +28,7 @@ export default function Hero() {
             <div className={styles['hero--container']}>
                 <div className={styles['image--container']}>
                     <Image
-                        src="/hero/website-cover.svg"
+                        src="/hero/website-cover.png"
                         alt=""
                         width={520}
                         height={741}
@@ -37,36 +37,36 @@ export default function Hero() {
                 </div>
                 <div className={styles['text--container']}>
                     <h1 className={styles['name']}>
-                        <span className={styles['first-name']}>Maveryck </span>
+                        Maveryck
                         <br />
-                        <span className={styles['last-name']}>Maya</span>
+                        Maya
                     </h1>
                     <p className={styles['rol']}>Frontend developer</p>
                     <div className={styles['ads-text--container']}>
-                        <p className={styles['ads-text--border']}>
+                        <div className={styles['ads-text--border']}>
                             <span
                                 className={`${styles['ads-text']} ${styles['ads-text_1']}`}
                                 ref={adsText1}
                             >
                                 Appealing design
                             </span>
-                        </p>
-                        <p className={styles['ads-text--border']}>
+                        </div>
+                        <div className={styles['ads-text--border']}>
                             <span
                                 className={`${styles['ads-text']} ${styles['ads-text_2']}`}
                                 ref={adsText2}
                             >
                                 Creative ideas
                             </span>
-                        </p>
-                        <p className={styles['ads-text--border']}>
+                        </div>
+                        <div className={styles['ads-text--border']}>
                             <span
                                 className={`${styles['ads-text']} ${styles['ads-text_3']}`}
                                 ref={adsText3}
                             >
                                 Fast results
                             </span>
-                        </p>
+                        </div>
                     </div>
                 </div>
             </div>

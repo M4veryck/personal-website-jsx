@@ -59,12 +59,16 @@ export default function Form({ dispatcher, state, setSendingEmail }) {
                 )}`}
                 required
             />
-            <span className={styles['field-length']}>
-                {50 - state.form.user_email.length} / {50}
-            </span>
-            {!state.validEmail && (
-                <p className={styles['invalid-email']}>! Invalid Email</p>
-            )}
+            <div className={styles['field_l-invalid_e--container']}>
+                <span
+                    className={`${styles['field-length']} ${styles['email_field-length']}`}
+                >
+                    {50 - state.form.user_email.length} / {50}
+                </span>
+                {!state.validEmail && (
+                    <p className={styles['invalid-email']}>Invalid Email</p>
+                )}
+            </div>
 
             <label htmlFor="message">
                 Message <span className={styles['required']}>*</span>

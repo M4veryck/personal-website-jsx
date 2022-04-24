@@ -66,7 +66,7 @@ export default function Footer() {
                 </div>
                 <div className={styles.col3}>
                     <h4 className={styles.attributionsTitle}>
-                        Backgrounds from:
+                        Background from:
                     </h4>
                     <Link href="https://www.freepik.com/vectors/background">
                         <a className={styles.attributionsLink} target="_blank">

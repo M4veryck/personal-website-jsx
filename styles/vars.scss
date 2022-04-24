@@ -7,11 +7,13 @@ $clr-soft-light: #ececec;
 $clr-dark: #000000;
 $clr-soft-dark: #111016;
 $clr-accent: #1cb4e2;
+// $clr-accent2: #1cb4e2;
 $clr-accent2: #005b60;
+// $clr-accent2: #f7f7f7;
 
 $fs-h1: 3rem;
 $fs-h2: 2.2rem;
-$fs-h3: 1.6rem;
+$fs-h3: 2rem;
 $fs-h4: 1.2rem;
 $fs-rol: 1.4rem;
 $fs-p: 1.2rem;
@@ -33,20 +35,31 @@ $box-shadow-strong: rgba(0, 0, 0, 0.3) 0px 19px 38px,
     background-size: cover;
 }
 
-@mixin h2-styles($color) {
-    @include font-stack('Raleway');
+@mixin section--title() {
     width: 90%;
-    max-width: 352px;
-    padding-block: 0.25em;
-    border: 3px solid $color;
-    margin: 0 auto 1em;
 
-    font-weight: 700;
-    color: $color;
+    margin-inline: auto;
+    margin-block: 1.5em;
+
+    color: $clr-soft-light;
     font-size: $fs-h2;
     text-align: center;
     letter-spacing: 0.05em;
-    text-transform: uppercase;
+}
+
+@mixin h2-styles($color) {
+    @include font-stack('Raleway');
+    width: fit-content;
+
+    border-bottom: 5px solid $color;
+    margin-inline: auto;
+
+    text-align: center;
+    font-weight: 700;
+    color: $color;
+    font-size: $fs-h2;
+    // text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 @mixin h3-styles($color) {
@@ -60,7 +73,7 @@ $box-shadow-strong: rgba(0, 0, 0, 0.3) 0px 19px 38px,
     font-weight: 600;
     color: $color;
     font-size: $fs-h3;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 

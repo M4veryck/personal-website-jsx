@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Image from 'next/image'
 import { useRef, useState, useEffect } from 'react'
-import { motion, useAnimation } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 import styles from '../../styles/Projects/Projects.module.scss'
-import useIntersection from '../hooks/useIntersection'
 import Modal from './modal'
 import { NavBarContextConsumer } from '../navBarContext'
+import useSlideFirstTime from '../hooks/useSlideFirstTime'
 
 export default function Project(props) {
     const { id, imgSrc, imgAlt, projectTitle, projectDesc } = props
@@ -41,38 +41,12 @@ export default function Project(props) {
     }, [displayModal])
 
     const projectRef = useRef()
-    const projectVisible = useIntersection(projectRef, '0px')
-    const [projectSeen, setProjectSeen] = useState(false)
-    const animation = useAnimation()
-
-    useEffect(() => {
-        if (!projectSeen) {
-            if (projectVisible) {
-                animation.start({
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                        type: 'easeOut',
-                        duration: 1,
-                    },
-                })
-                setProjectSeen(true)
-                return
-            }
-
-            if (windowBigEnough) {
-                animation.start({
-                    opacity: 0,
-                    y: '50%',
-                    transition: {
-                        type: 'easeIn',
-                        duration: 1,
-                    },
-                })
-                return
-            }
-        }
-    }, [projectVisible])
+    const projectAnimation = useSlideFirstTime(projectRef, {
+        axis: 'y',
+        overflow: '50%',
+        reveal: true,
+        revealAt: '0px',
+    })
 
     return (
         <>
@@ -83,14 +57,14 @@ export default function Project(props) {
             <motion.article
                 className={styles['project--article']}
                 ref={projectRef}
-                animate={animation}
+                animate={projectAnimation}
             >
                 <div className={styles['image--container']}>
                     <Image
                         src={imgSrc}
                         alt={imgAlt}
-                        width={330}
-                        height={278}
+                        width={240}
+                        height={202}
                         className={styles['project-image']}
                     />
                 </div>

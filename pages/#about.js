@@ -1,53 +1,30 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import Link from 'next/link'
-import { motion, useAnimation } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 import styles from '../styles/AboutMe/AboutMe.module.scss'
 import useCurrentSection from '../components/hooks/useCurrentSection'
-import useIntersection from '../components/hooks/useIntersection'
-import { NavBarContextConsumer } from '../components/navBarContext'
-// import useIntersection from '../hooks/useIntersection'
+import useSlideFirstTime from '../components/hooks/useSlideFirstTime'
 
 export default function AboutMe() {
     const aboutRef = useRef()
-    const { windowBigEnough } = NavBarContextConsumer()
-    const [animationSeen, setAnimationSeen] = useState(false)
-    // const [aboutVisible, setAboutVisible] = useState(false)
+    const skillsRef = useRef()
+    const titleRef = useRef()
+    const skillsAnimation = useSlideFirstTime(skillsRef, {
+        axis: 'x',
+        overflow: '-25vw',
+        reveal: false,
+        revealAt: '-20%',
+    })
+    const titleAnimation = useSlideFirstTime(titleRef, {
+        axis: 'y',
+        overflow: '150%',
+        reveal: true,
+        revealAt: '-20%',
+    })
 
     useCurrentSection(aboutRef, '-50%', '/#about')
-
-    const skillsRef = useRef()
-    const skillsVisible = useIntersection(skillsRef, '20%')
-    const animation = useAnimation()
-
-    useEffect(() => {
-        if (!animationSeen) {
-            if (skillsVisible) {
-                animation.start({
-                    // scale: 1,
-                    // opacity: 1,
-                    x: 0,
-                    transition: {
-                        type: 'easeOut',
-                        duration: 1.1,
-                    },
-                })
-                setAnimationSeen(true)
-                return
-            }
-
-            if (windowBigEnough) {
-                animation.start({
-                    x: '-40vw',
-                    transition: {
-                        type: 'ease',
-                        duration: 1.1,
-                    },
-                })
-            }
-        }
-    }, [skillsVisible])
 
     return (
         <section
@@ -55,11 +32,17 @@ export default function AboutMe() {
             ref={aboutRef}
             id="about"
         >
-            {/* <div className={styles['border-decoration']}> */}
+            <motion.h2
+                className={styles['section--title']}
+                ref={titleRef}
+                animate={titleAnimation}
+            >
+                A little bit about me...
+            </motion.h2>
             <div className={styles['about-me--container']}>
                 <div className={styles['overlap-div']}>
                     <aside className={styles['who-i-am--col']}>
-                        <h2 className={styles['about--title']}>Who I am</h2>
+                        <h3 className={styles['about--title']}>Who I am</h3>
 
                         <div className={styles['descriptions--wrapper']}>
                             <p className={styles['description']}>
@@ -91,7 +74,7 @@ export default function AboutMe() {
                 <motion.aside
                     className={styles['skills--col']}
                     ref={skillsRef}
-                    animate={animation}
+                    animate={skillsAnimation}
                 >
                     <h3 className={styles['just-skills']}>Skills</h3>
 
@@ -133,7 +116,6 @@ export default function AboutMe() {
                     </div>
                 </motion.aside>
             </div>
-            {/* </div> */}
         </section>
     )
 }

@@ -1,50 +1,29 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect, useRef } from 'react'
-import { motion, useAnimation } from 'framer-motion'
+import { useRef } from 'react'
+import { motion } from 'framer-motion'
 
 import styles from '../styles/Projects/Projects.module.scss'
 import Project from '../components/projects/project'
 import { projectsData } from '../components/projects/projectsData'
 import useCurrentSection from '../components/hooks/useCurrentSection'
-import { NavBarContextConsumer } from '../components/navBarContext'
-import useIntersection from '../components/hooks/useIntersection'
+import useSlideFirstTime from '../components/hooks/useSlideFirstTime'
 
 export default function Projects() {
     const projectsRef = useRef()
     const titleRef = useRef()
-    const [titleSeen, setTitleSeen] = useState(false)
-    const { windowBigEnough } = NavBarContextConsumer()
-    const titleVisible = useIntersection(titleRef, '-50px')
-    const animation = useAnimation()
-
-    useEffect(() => {
-        if (!titleSeen) {
-            if (titleVisible) {
-                animation.start({
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                        type: 'easeOut',
-                        duration: 1,
-                    },
-                })
-                setTitleSeen(true)
-                return
-            }
-
-            if (windowBigEnough) {
-                animation.start({
-                    opacity: 0,
-                    y: '150%',
-                    transition: {
-                        type: 'easeIn',
-                        duration: 1,
-                    },
-                })
-                return
-            }
-        }
-    }, [titleVisible])
+    const lpRef = useRef()
+    const titleAnimation = useSlideFirstTime(titleRef, {
+        axis: 'y',
+        overflow: '150%',
+        reveal: true,
+        revealAt: '-10px',
+    })
+    const lpAnimation = useSlideFirstTime(titleRef, {
+        axis: 'y',
+        overflow: '150%',
+        reveal: true,
+        revealAt: '-10px',
+    })
 
     useCurrentSection(projectsRef, '-50%', '/#projects')
 
@@ -61,10 +40,18 @@ export default function Projects() {
             <motion.h2
                 className={styles['section--title']}
                 ref={titleRef}
-                animate={animation}
+                animate={titleAnimation}
             >
-                My Projects
+                Checkout my work:
             </motion.h2>
+
+            <motion.h3
+                className={styles['latest-projects--title']}
+                ref={lpRef}
+                animate={lpAnimation}
+            >
+                Latest projects
+            </motion.h3>
 
             <div className={styles['projects--container']}>{Projects}</div>
         </section>

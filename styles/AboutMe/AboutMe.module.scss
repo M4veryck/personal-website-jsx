@@ -1,10 +1,6 @@
 @import '../vars.scss';
 
 .about-me--section {
-    @include background-image(
-        $clr-soft-light,
-        url('/backgrounds/main-light-background.svg')
-    );
     display: grid;
     width: 100%;
     position: relative;
@@ -18,29 +14,26 @@
     }
 }
 
-.border-decoration {
-    width: 90%;
-    align-self: flex-start;
-
-    border-bottom: 2px solid rgb(182, 182, 182);
-    margin-inline: auto;
+.section--title {
+    @include section--title();
 }
 
 .about-me--container {
     z-index: 2;
     display: grid;
-    // width: 100%;
     width: 90%;
 
     margin-block: 3em;
     margin-inline: auto;
 
+    color: $clr-soft-light;
+
     a {
-        color: $clr-dark;
+        color: $clr-light;
 
         &:hover,
         &:focus-visible {
-            color: $clr-accent2;
+            color: $clr-accent;
         }
     }
 }
@@ -51,7 +44,7 @@
 }
 
 .about--title {
-    @include h2-styles($clr-accent2);
+    @include h3-styles($clr-accent);
 
     margin-bottom: 2em;
     margin-inline: auto;
@@ -82,7 +75,7 @@
         justify-self: right;
 
         padding-right: 1em;
-        border-right: 3px solid $clr-accent2;
+        border-right: 3px solid $clr-accent;
 
         text-align: end;
     }
@@ -93,7 +86,7 @@
 }
 
 .just-skills {
-    @include h3-styles($clr-accent2);
+    @include h3-styles($clr-accent);
     @include font-stack('Raleway');
 
     margin-top: 0;
@@ -117,7 +110,7 @@
 }
 
 .skills-title {
-    @include h4-styles($clr-accent2);
+    @include h4-styles($clr-accent);
 
     margin-top: 0;
 }
@@ -137,14 +130,14 @@
         margin-inline: auto;
 
         text-align: center;
-        color: $clr-soft-light;
+        color: $clr-dark;
         font-weight: 500;
-        font-size: 0.75rem;
+        font-size: 0.8rem;
     }
 
     @for $i from 1 through 3 {
         li:nth-child(#{$i}) {
-            background-color: lighten($clr-soft-dark, $i * 5%);
+            background-color: darken($clr-light, $i * 5%);
         }
     }
 }
@@ -152,7 +145,7 @@
 .frontend-skills {
     @for $i from 1 through 5 {
         li:nth-child(#{$i}) {
-            background-color: lighten($clr-soft-dark, $i * 3%);
+            background-color: darken($clr-light, $i * 3%);
         }
     }
 }
@@ -178,12 +171,20 @@
 }
 
 @media (min-width: 520px) {
+    .section--title {
+        font-size: $fs-h2 + 0.4;
+    }
+
     .description {
         margin-block: 2em;
     }
 }
 
 @media (min-width: 820px) {
+    .section--title {
+        font-size: $fs-h2 + 0.6;
+    }
+
     .about--title {
         font-size: $fs-h2 + 0.1;
     }
@@ -205,15 +206,15 @@
     }
 }
 
-@media (min-width: 880px) {
-    .border-decoration {
-        padding-block: 2.2rem * 3;
+@media (min-width: 920px) {
+    .section--title {
+        font-size: $fs-h2 + 1;
+
+        margin-block: 2.5em;
     }
 
     .about-me--container {
-        grid-template-columns: 10% 40% 50%;
-        // width: 100%;
-        // max-width: 980px;
+        grid-template-columns: 5% 40% 55%;
         padding-block: 2.2rem * 3;
         margin-block: 0;
     }
@@ -224,7 +225,6 @@
 
     .overlap-div {
         width: 100%;
-        // max-width: 490px;
         height: fit-content;
         grid-column: 3 / 4;
         justify-self: end;
@@ -236,7 +236,7 @@
         );
         box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
             rgba(0, 0, 0, 0.22) 0px 15px 12px;
-        padding: 4em 2em;
+        padding: 2em 2em;
         border-radius: 3px;
     }
 
@@ -265,7 +265,6 @@
 
     .description {
         width: 70%;
-        // max-width: 520px;
 
         margin-block: 1.5em;
 
@@ -289,7 +288,6 @@
 
     .skills--col {
         width: 100%;
-        // max-width: 392px;
         height: fit-content;
         grid-row: 1 / 2;
         grid-column: 2 / 3;
@@ -345,17 +343,6 @@
         }
     }
 }
-
-// @media (min-width: 1000px) {
-//     .about-me--section {
-//         transform: translateX(-60%);
-//         transition: transform 1s 0.2s cubic-bezier(0.5, 0, 0.5, 1);
-//     }
-
-//     .show-about {
-//         transform: translateX(0);
-//     }
-// }
 
 @media (min-width: 1080px) {
     .just-skills {

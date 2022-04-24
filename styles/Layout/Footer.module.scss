@@ -8,7 +8,6 @@
     z-index: 8;
 
     .footerContainer {
-        // z-index: 20000000;
         width: 90%;
         margin-block: 3.5em;
 
@@ -45,10 +44,8 @@
             .linkText {
                 width: max-content;
             }
-            // width: 300px;
             .linkContainer {
                 height: fit-content;
-                // grid-column: 1 / 2;
 
                 .footerLink {
                     width: fit-content;
@@ -60,7 +57,6 @@
                     align-items: center;
 
                     text-decoration: none;
-                    // color: $light-color;
 
                     .linkText {
                         margin-block: 1em;
@@ -79,20 +75,14 @@
         }
 
         .col2 {
-            // width: 240px;
             .pageInfoIntro {
-                // grid-row: 1 / 2;
-                // grid-column: 2 / 3;
-                // width: 240px;
                 margin: 0;
                 margin-bottom: 1em;
-                // color: $light-color;
                 text-align: center;
             }
 
             .techsContainerOne,
             .techsContainerTwo {
-                // width: 240px;
                 height: fit-content;
 
                 display: flex;
@@ -101,7 +91,6 @@
         }
 
         .col3 {
-            // width: fit-content;
             display: flex;
             flex-direction: column;
             justify-self: center;

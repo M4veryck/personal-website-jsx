@@ -6,11 +6,6 @@
     width: 100%;
     position: relative;
     z-index: 1;
-
-    @include background-image(
-        $clr-soft-dark,
-        url('/backgrounds/dark-background.svg')
-    );
 }
 
 .hero--container {
@@ -40,7 +35,6 @@
     background-color: #fff;
     padding: 2em;
     padding-right: 0;
-    // padding: 2em 1.2em;
     margin-top: 1em;
 
     color: $clr-dark;
@@ -53,11 +47,10 @@
 
     margin-block: 0;
 
-    font-size: $fs-h1;
+    font-size: $fs-h1 - 0.3;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    // color: $clr-dark;
 }
 
 .rol {
@@ -83,20 +76,8 @@
     }
 }
 
-.overlap-div {
-    width: 80%;
-    max-width: 360px;
-    position: relative;
-    top: -25%;
-    // right: -2%;
-    z-index: 2;
-
-    border-radius: 3px;
-}
-
 .ads-text--container {
     position: relative;
-    // background-color: #ddd;
 }
 
 .ads-text--border {
@@ -104,6 +85,7 @@
     position: relative;
 
     padding-left: 1em;
+    margin-block: 1em;
 
     font-size: $fs-p;
     font-weight: $bold;
@@ -158,7 +140,6 @@
 @media (min-width: 800px) {
     .hero--container {
         grid-template-columns: 55% 5% 40%;
-        // grid-template-rows: auto;
         align-items: center;
     }
 
@@ -169,7 +150,6 @@
 
     .image--container {
         width: 100%;
-        // max-width: 460px;
         grid-column: 3 / 4;
     }
 }
