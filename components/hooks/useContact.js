@@ -20,8 +20,37 @@ export const SEND_OPTIONS = {
     SERVER_ERROR: 'server-error',
 }
 
-export default function useContact(initialState, emailjsId) {
+const initialState = {
+    form: {
+        user_name: '',
+        user_email: '',
+        message: '',
+    },
+    emailTyped: false,
+    badFields: ['user_name', 'user_email', 'message'],
+    validEmail: true,
+    styleBadFields: false,
+    disabledBtn: false,
+}
+
+export default function useContact(emailjsId) {
     init(emailjsId)
+    useEffect(() => {
+        initialState.form = {
+            user_name: localStorage.getItem('user_name') || '',
+            user_email: localStorage.getItem('user_email') || '',
+            message: localStorage.getItem('message') || '',
+        }
+        initialState.emailTyped = initialState.form.user_email ? true : false
+        initialState.badFields = filterEmptyFields(initialState.form)
+        initialState.validEmail = initialState.form.user_email
+            ? isEmailValid(initialState.form.user_email)
+            : true
+        if (!isEmailValid(initialState.form.user_email)) {
+            initialState.badFields = [...initialState.badFields, 'user_email']
+        }
+    }, [])
+
     const [state, dispatcher] = useReducer(reducer, initialState)
     const [emailjsCase, setEmailjsCase] = useState(SEND_OPTIONS.NOT_SEND)
     const [sendingEmail, setSendingEmail] = useState(false)
@@ -31,7 +60,17 @@ export default function useContact(initialState, emailjsId) {
             case ACTIONS.HANDLE_FORM:
                 const { name, value } = action.payload
 
-                const newForm = { ...state.form, [name]: value }
+                let shortenedValue = value
+
+                if (name === 'message' && value.length >= 1000) {
+                    shortenedValue = value.slice(0, 1000)
+                } else if (name !== 'message' && value.length >= 50) {
+                    shortenedValue = value.slice(0, 50)
+                }
+
+                localStorage.setItem(name, shortenedValue)
+
+                const newForm = { ...state.form, [name]: shortenedValue }
                 const badFields = filterEmptyFields(newForm)
 
                 if (!isEmailValid(newForm.user_email)) {
@@ -63,6 +102,10 @@ export default function useContact(initialState, emailjsId) {
                         styleBadFields: true,
                     }
                 }
+
+                localStorage.removeItem('user_name')
+                localStorage.removeItem('user_email')
+                localStorage.removeItem('message')
 
                 action.setSendingEmail(true)
 

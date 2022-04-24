@@ -1,46 +1,53 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import { motion, useAnimation } from 'framer-motion'
 
 import styles from '../styles/AboutMe/AboutMe.module.scss'
 import useCurrentSection from '../components/hooks/useCurrentSection'
+import useIntersection from '../components/hooks/useIntersection'
+import { NavBarContextConsumer } from '../components/navBarContext'
+// import useIntersection from '../hooks/useIntersection'
 
 export default function AboutMe() {
     const aboutRef = useRef()
+    const { windowBigEnough } = NavBarContextConsumer()
+    const [animationSeen, setAnimationSeen] = useState(false)
     // const [aboutVisible, setAboutVisible] = useState(false)
 
     useCurrentSection(aboutRef, '-50%', '/#about')
 
-    // useEffect(() => {
-    //     const aboutEl = document.getElementById('about')
+    const skillsRef = useRef()
+    const skillsVisible = useIntersection(skillsRef, '20%')
+    const animation = useAnimation()
 
-    //     if (typeof window !== 'undefined') {
-    //         const distanceToHalfAbout =
-    //             window.pageYOffset + aboutEl.getBoundingClientRect().top * 1.5
+    useEffect(() => {
+        if (!animationSeen) {
+            if (skillsVisible) {
+                animation.start({
+                    // scale: 1,
+                    // opacity: 1,
+                    x: 0,
+                    transition: {
+                        type: 'easeOut',
+                        duration: 1.1,
+                    },
+                })
+                setAnimationSeen(true)
+                return
+            }
 
-    //         window.addEventListener('scroll', () => {
-    //             let amountScrolled = window.pageYOffset + window.innerHeight
-    //             if (amountScrolled >= distanceToHalfAbout) {
-    //                 setAboutVisible(true)
-    //             }
-    //         })
-    //     }
-
-    //     return () => {
-    //         if (typeof window !== 'undefined') {
-    //             const distanceToHalfAbout =
-    //                 window.pageYOffset +
-    //                 aboutEl.getBoundingClientRect().top * 1.5
-
-    //             window.removeEventListener('scroll', () => {
-    //                 let amountScrolled = window.pageYOffset + window.innerHeight
-    //                 if (amountScrolled >= distanceToHalfAbout) {
-    //                     setAboutVisible(true)
-    //                 }
-    //             })
-    //         }
-    //     }
-    // }, [aboutVisible])
+            if (windowBigEnough) {
+                animation.start({
+                    x: '-40vw',
+                    transition: {
+                        type: 'ease',
+                        duration: 1.1,
+                    },
+                })
+            }
+        }
+    }, [skillsVisible])
 
     return (
         <section
@@ -81,7 +88,11 @@ export default function AboutMe() {
                     </aside>
                 </div>
 
-                <aside className={styles['skills--col']}>
+                <motion.aside
+                    className={styles['skills--col']}
+                    ref={skillsRef}
+                    animate={animation}
+                >
                     <h3 className={styles['just-skills']}>Skills</h3>
 
                     <div className={styles['all-skills--wrapper']}>
@@ -120,7 +131,7 @@ export default function AboutMe() {
                             </ul>
                         </div>
                     </div>
-                </aside>
+                </motion.aside>
             </div>
             {/* </div> */}
         </section>

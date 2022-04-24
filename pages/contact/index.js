@@ -1,8 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { useRef } from 'react'
+import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+
 import styles from '../../styles/Contact/Contact.module.scss'
-import { useRef } from 'react'
 import useCurrentSection from '../../components/hooks/useCurrentSection'
 import Layout from '../../components/layout/layout'
 import Form from '../../components/contact/form'
@@ -11,29 +13,22 @@ import useContact, { SEND_OPTIONS } from '../../components/hooks/useContact'
 const emailjsId = 'iZu4cY_9HYBlPdW9q'
 
 export default function Contact() {
-    const initialState = {
-        form: {
-            user_name: '',
-            user_email: '',
-            message: '',
-        },
-        emailTyped: false,
-        badFields: ['user_name', 'user_email', 'message'],
-        validEmail: true,
-        styleBadFields: false,
-        disabledBtn: false,
-    }
-
     const contactRef = useRef()
     useCurrentSection(contactRef, '-50%', '/contact')
 
-    const { emailjsCase, dispatcher, state, setSendingEmail } = useContact(
-        initialState,
-        emailjsId
-    )
+    const { emailjsCase, dispatcher, state, setSendingEmail } =
+        useContact(emailjsId)
 
     return (
         <Layout>
+            <Head>
+                <title>Contact - Maveryck Maya</title>
+                <meta
+                    name="description"
+                    content="If you are interested in hiring me, providing feedback, or any other inquiries, please fill in the form."
+                />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <section className={styles['contact--section']} ref={contactRef}>
                 <div className={styles['contact--container']}>
                     {emailjsCase === SEND_OPTIONS.SERVER_ERROR ? (

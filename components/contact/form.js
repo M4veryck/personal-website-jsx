@@ -36,6 +36,9 @@ export default function Form({ dispatcher, state, setSendingEmail }) {
                 )}`}
                 required
             />
+            <span className={styles['field-length']}>
+                {50 - state.form.user_name.length} / {50}
+            </span>
 
             <label htmlFor="user_email">
                 Email <span className={styles['required']}>*</span>
@@ -56,6 +59,9 @@ export default function Form({ dispatcher, state, setSendingEmail }) {
                 )}`}
                 required
             />
+            <span className={styles['field-length']}>
+                {50 - state.form.user_email.length} / {50}
+            </span>
             {!state.validEmail && (
                 <p className={styles['invalid-email']}>! Invalid Email</p>
             )}
@@ -76,6 +82,9 @@ export default function Form({ dispatcher, state, setSendingEmail }) {
                 className={`${styles['message']} ${isBadFieldClass('message')}`}
                 required
             />
+            <span className={styles['field-length']}>
+                {1000 - state.form.message.length} / {1000}
+            </span>
 
             <p className={styles['required']}>* Required</p>
 

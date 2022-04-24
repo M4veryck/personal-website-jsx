@@ -21,8 +21,8 @@ export default function Header() {
             document.documentElement.style.overflowY = 'hidden'
             return
         }
-        // document.body.style.overflow = 'initial'
-        // document.documentElement.style.overflow = 'initial'
+        document.body.style.overflowY = 'initial'
+        document.documentElement.style.overflowY = 'initial'
     }, [navOn])
 
     useEffect(() => {
@@ -43,7 +43,7 @@ export default function Header() {
 
     return (
         <header className={styles['header']} id="header">
-            <Link href="/#main">
+            <Link href="/">
                 <a className={styles['logo--link']}>
                     <Image
                         src="/logos/demo-MMaveryck.svg"
@@ -52,6 +52,9 @@ export default function Header() {
                         height={50}
                         className={styles['logo']}
                     />
+                    <span className={styles['assistive-text']}>
+                        Website Icon. Go to home page
+                    </span>
                 </a>
             </Link>
             <button

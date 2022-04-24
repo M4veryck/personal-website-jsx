@@ -23,6 +23,8 @@
     padding: 3em;
     border-radius: 3px;
     margin-block: 2.2rem * 3;
+
+    font-weight: 500;
 }
 
 .success-message--container,
@@ -79,14 +81,17 @@
 .user-name,
 .user-email,
 .message {
-    @include font-stack($primary-font);
+    @include font-stack('Inter');
     width: 100%;
 
     padding-inline: 0.5em;
+    padding-block: 0.25em;
     border: 1px solid $clr-soft-dark;
     border-radius: 5px;
+    margin-bottom: 0.5em;
 
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: 400;
 
     &:focus-visible {
         transform: scale(1.03);
@@ -95,17 +100,21 @@
     }
 }
 
-.user-name,
-.user-email {
-    margin-bottom: 1.4em;
-    padding-block: 0.25em;
+.field-length {
+    @include font-stack('Lato');
+
+    margin-top: 0;
+    margin-bottom: 1em;
+
+    font-size: 1rem;
+    text-align: end;
 }
 
 .invalid-email {
     width: fit-content;
 
-    padding: 0.5em 0;
-    border-bottom: 1px solid red;
+    // padding: 0.5em 0;
+    // border-bottom: 1px solid red;
     margin: 0 0 2em;
 
     color: red;
@@ -118,11 +127,13 @@
 }
 
 .required {
+    @include font-stack('Inter');
     color: rgb(230, 33, 33);
 }
 
 .bad-field {
     border-color: red;
+    border-width: 2px;
 }
 
 /* ====================

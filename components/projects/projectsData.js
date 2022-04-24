@@ -14,7 +14,7 @@ const projectsData = [
         techStack:
             'HTML, CSS, Sass, CSSModules, JavaScript, React, Next.js, MongoDB',
         difficulties:
-            'Managing authentication and state between login, registration, playlists, and playlists/[id] was a big challenge. For the most part, it was because of React rules for re-rendering a component (there were cases where only refreshing would update the data). Surprisingly, coding the /api folder (all backend related) was pretty straightforward.',
+            'Managing authentication and state between login, registration, playlists, and playlists/[id] was a big challenge. For the most part, it was because of React rules for updating a component (there were cases where only refreshing the page would update the data). Surprisingly, coding the /api folder (all backend related) was pretty straightforward.',
         futureFeatures:
             'Soon, users will be able to search for songs and add them to their playlists. I will implement this feature using Spotify API.',
     },

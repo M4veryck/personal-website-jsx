@@ -8,14 +8,14 @@ const personalLinkData = [
     },
     {
         id: '2',
-        url: 'https://linkedin.com',
+        url: 'https://linkedin.com/in/maveryck-maya',
         imageSrc: '/icons/demo-linkedin-icon2.svg',
         imageAlt: 'linkedin-icon',
         text: 'Maveryck Maya',
     },
     {
         id: '3',
-        url: 'https://github.com',
+        url: 'https://github.com/M4veryck',
         imageSrc: '/icons/demo-github-icon.svg',
         imageAlt: 'github-icon',
         text: 'M4veryck',

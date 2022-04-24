@@ -20,11 +20,6 @@ export default function Hero() {
                 `--adsText${idx + 1}Length`,
                 textContentLength
             )
-
-            document.documentElement.style.setProperty(
-                `--left${idx + 1}`,
-                `${100 + 100 / (textContentLength + 1)}%`
-            )
         })
     }, [])
 
