@@ -59,10 +59,6 @@ function NavBarContextProvider({ children }) {
 function NavBarContextConsumer() {
     const context = useContext(NavBarContext)
 
-    if (!context) {
-        console.error('Context Error')
-    }
-
     return context
 }
 

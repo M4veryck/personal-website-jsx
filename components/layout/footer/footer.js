@@ -49,7 +49,7 @@ export default function Footer() {
     return (
         <footer className={styles.footer}>
             <div className={styles.footerContainer}>
-                <div className={styles.col1} id="iJustWantToFormatThis">
+                <div className={styles.col1}>
                     <h4 className={styles.personalLinksTitle}>Contact Info:</h4>
                     {PersonalLinks}
                 </div>

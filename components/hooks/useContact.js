@@ -124,15 +124,9 @@ export default function useContact(emailjsId) {
             emailjs
                 .send('contact_service', 'contact_form', state.form)
                 .then(res => {
-                    console.log(
-                        `Email sent from ${state.form.user_email} succesfully`
-                    )
-
                     setEmailjsCase(SEND_OPTIONS.SUCCESS)
                 })
                 .catch(err => {
-                    console.log(err.text)
-
                     setEmailjsCase(SEND_OPTIONS.SERVER_ERROR)
                 })
         }
